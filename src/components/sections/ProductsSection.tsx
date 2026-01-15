@@ -61,7 +61,7 @@ export const ProductsSection = () => {
                   <img 
                     src={product.image} 
                     alt={product.title}
-                    className="w-full h-full object-contain p-4 transition-all duration-500 group-hover:scale-110"
+                    className="w-full h-full object-cover scale-125 transition-all duration-500 group-hover:scale-150"
                   />
                   
                   {/* Hover overlay with CTA */}
