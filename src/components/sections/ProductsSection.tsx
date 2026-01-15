@@ -52,9 +52,9 @@ export const ProductsSection = () => {
           {products.map((product, index) => (
             <DepthCard key={index} index={index}>
               <StaggerItem>
-              <div className="group cursor-pointer h-full">
+              <div className="group cursor-pointer h-full p-4 rounded-2xl border-2 border-cream/20 bg-cream/5 hover:border-primary/40 hover:bg-cream/10 transition-all duration-300">
                 {/* Product Image Container - 21:9 aspect ratio with rounded corners */}
-                <div className="relative aspect-[21/9] mb-6 overflow-hidden rounded-2xl bg-gradient-to-br from-cream/10 to-cream/5 border border-cream/10">
+                <div className="relative aspect-[21/9] mb-6 overflow-hidden rounded-xl bg-gradient-to-br from-cream/10 to-cream/5">
                   {/* Subtle inner glow */}
                   <div className="absolute inset-0 bg-gradient-to-t from-dark/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   
@@ -77,16 +77,9 @@ export const ProductsSection = () => {
                   <h3 className="text-xl font-semibold text-cream mb-2 group-hover:text-primary transition-colors duration-300">
                     {product.title}
                   </h3>
-                  <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
+                  <p className="text-muted-foreground text-sm leading-relaxed">
                     {product.description}
                   </p>
-                  <a 
-                    href="#" 
-                    className="inline-flex items-center gap-2 text-primary font-medium text-sm group-hover:gap-3 transition-all"
-                  >
-                    See products
-                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                  </a>
                 </div>
               </div>
             </StaggerItem>
