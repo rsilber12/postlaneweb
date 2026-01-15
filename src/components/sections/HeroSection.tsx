@@ -40,9 +40,8 @@ export const HeroSection = () => {
           />
         </motion.div>
         
-        {/* Dark gradient overlay for text readability */}
-        <div className="absolute inset-0 bg-dark/80" />
-        <div className="absolute inset-0 bg-gradient-to-r from-dark via-dark/90 to-dark/60" />
+        {/* Dark gradient overlay - dark on left where text is, fading to transparent on right */}
+        <div className="absolute inset-0 bg-gradient-to-r from-dark via-dark/85 to-transparent" />
         
         {/* Animated grid pattern */}
         <div 
@@ -84,10 +83,10 @@ export const HeroSection = () => {
         />
       </div>
 
-      {/* Primary content with parallax - aligned left with logo */}
+      {/* Primary content with parallax - aligned with logo using container-custom */}
       <motion.div 
         style={{ y: contentY, opacity }}
-        className="relative w-full pt-36 pb-24 lg:pt-40 lg:pb-32 px-6 lg:px-8 xl:px-12"
+        className="relative container-custom pt-36 pb-24 lg:pt-40 lg:pb-32"
       >
         <div className="max-w-4xl">
           {/* Animated badge */}
