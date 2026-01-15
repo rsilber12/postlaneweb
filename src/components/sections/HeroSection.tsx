@@ -36,12 +36,12 @@ export const HeroSection = () => {
           <img
             src={heroBg}
             alt="EV Charging Station"
-            className="w-full h-full object-cover brightness-[0.5]"
+            className="w-full h-full object-cover"
           />
         </motion.div>
         
-        {/* Dark gradient overlay - dark on left for text, transparent on right for product */}
-        <div className="absolute inset-0 bg-gradient-to-r from-dark via-dark/70 to-transparent" />
+        {/* Dark gradient overlay - solid dark on left, fades to transparent on right to show bright product */}
+        <div className="absolute inset-0 bg-gradient-to-r from-dark from-30% via-dark/50 via-50% to-transparent to-70%" />
         
         {/* Animated grid pattern */}
         <div 
@@ -88,7 +88,7 @@ export const HeroSection = () => {
         style={{ y: contentY, opacity }}
         className="relative container-custom pt-36 pb-24 lg:pt-40 lg:pb-32"
       >
-        <div className="max-w-4xl">
+        <div className="max-w-4xl -ml-4 lg:-ml-8">
           {/* Animated badge */}
           <motion.div
             initial={{ opacity: 0, y: 20, scale: 0.9 }}
