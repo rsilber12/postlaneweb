@@ -2,94 +2,106 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Lota Grotesk Font Family */
+@font-face {
+  font-family: 'Lota Grotesque';
+  src: url('/fonts/LotaGrotesque-ExtraLight.otf') format('opentype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Lota Grotesque';
+  src: url('/fonts/LotaGrotesque-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Lota Grotesque';
+  src: url('/fonts/LotaGrotesque-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Lota Grotesque';
+  src: url('/fonts/LotaGrotesque-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Lota Grotesque';
+  src: url('/fonts/LotaGrotesque-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Postlane Brand Colors */
+    --postlane-green: 147 64% 47%;
+    --postlane-cream: 70 100% 97%;
+    --postlane-dark: 0 4% 13%;
+    
+    /* Base tokens */
+    --background: 0 4% 13%;
+    --foreground: 70 100% 97%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 0 0% 8%;
+    --card-foreground: 70 100% 97%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 0 4% 13%;
+    --popover-foreground: 70 100% 97%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 147 64% 47%;
+    --primary-foreground: 0 4% 13%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 0 0% 18%;
+    --secondary-foreground: 70 100% 97%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 70%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 147 64% 47%;
+    --accent-foreground: 0 4% 13%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 0 0% 25%;
+    --input: 0 0% 25%;
+    --ring: 147 64% 47%;
 
     --radius: 0.5rem;
 
+    /* Light section tokens */
+    --light-bg: 70 100% 97%;
+    --light-foreground: 0 4% 13%;
+    --light-muted: 0 0% 60%;
+    --light-card: 0 0% 100%;
+    --light-border: 0 0% 88%;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.1), 0 2px 4px -2px hsl(0 0% 0% / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.1), 0 4px 6px -4px hsl(0 0% 0% / 0.1);
+    --shadow-xl: 0 20px 25px -5px hsl(0 0% 0% / 0.1), 0 8px 10px -6px hsl(0 0% 0% / 0.1);
+    --shadow-glow: 0 0 40px hsl(147 64% 47% / 0.3);
+
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
@@ -99,7 +111,260 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
-  body {
-    @apply bg-background text-foreground;
+  html {
+    scroll-behavior: smooth;
   }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Lota Grotesque', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  /* Light section styling */
+  .section-light {
+    @apply bg-light text-light-foreground;
+  }
+  
+  .section-light .text-muted-foreground {
+    @apply text-light-muted;
+  }
+
+  /* Button variants */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 
+           bg-primary text-primary-foreground font-semibold rounded-lg
+           transition-all duration-300 ease-out
+           hover:brightness-110 hover:shadow-glow hover:scale-[1.02]
+           active:scale-[0.98];
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3
+           bg-transparent border-2 border-cream text-cream font-semibold rounded-lg
+           transition-all duration-300 ease-out
+           hover:bg-cream hover:text-dark;
+  }
+
+  .btn-secondary-dark {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3
+           bg-transparent font-semibold rounded-lg
+           transition-all duration-300 ease-out;
+    border: 2px solid hsl(var(--postlane-dark));
+    color: hsl(var(--postlane-dark));
+  }
+
+  .btn-secondary-dark:hover {
+    background-color: hsl(var(--postlane-dark));
+    color: hsl(var(--postlane-cream));
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2
+           text-primary font-medium
+           transition-all duration-200
+           hover:underline underline-offset-4;
+  }
+
+  /* Card styles */
+  .card-product {
+    @apply relative overflow-hidden rounded-2xl bg-card p-6
+           border border-border transition-all duration-300
+           hover:border-primary/50;
+    box-shadow: 0 0 0 transparent;
+  }
+
+  .card-product:hover {
+    box-shadow: 0 0 30px hsl(147 64% 47% / 0.15);
+  }
+
+  .card-feature {
+    @apply relative overflow-hidden rounded-xl bg-light-card p-8
+           border border-light-border shadow-md
+           transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  }
+
+  /* Icon badge */
+  .icon-badge {
+    @apply w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center
+           text-primary mb-6;
+  }
+
+  .icon-badge-light {
+    @apply w-14 h-14 rounded-xl bg-primary/15 flex items-center justify-center
+           text-primary mb-6;
+  }
+
+  /* Gradient overlays */
+  .hero-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, hsl(0 4% 13% / 0.95), hsl(0 4% 13% / 0.8), transparent);
+  }
+
+  .hero-gradient-bottom {
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    height: 8rem;
+    background: linear-gradient(to top, hsl(0 4% 13%), transparent);
+  }
+
+  /* Container */
+  .container-custom {
+    @apply max-w-7xl mx-auto px-6 lg:px-8;
+  }
+
+  /* Section spacing */
+  .section-padding {
+    @apply py-20 lg:py-28;
+  }
+
+  /* Stat cards */
+  .stat-item {
+    @apply text-center;
+  }
+
+  .stat-value {
+    @apply text-4xl lg:text-5xl font-bold text-primary mb-2;
+  }
+
+  .stat-label {
+    @apply text-muted-foreground;
+  }
+
+  /* Navigation */
+  .nav-link {
+    @apply transition-colors duration-200 font-medium;
+    color: hsl(var(--postlane-cream) / 0.8);
+  }
+  
+  .nav-link:hover {
+    color: hsl(var(--postlane-cream));
+  }
+
+  .nav-link-dark {
+    @apply transition-colors duration-200 font-medium;
+    color: hsl(var(--postlane-dark) / 0.8);
+  }
+  
+  .nav-link-dark:hover {
+    color: hsl(var(--postlane-dark));
+  }
+
+  /* Process step */
+  .process-step {
+    @apply relative flex flex-col items-center text-center;
+  }
+
+  .process-number {
+    @apply w-16 h-16 rounded-full bg-primary flex items-center justify-center
+           text-primary-foreground text-2xl font-bold mb-6;
+  }
+
+  /* Form styles for light sections */
+  .form-input {
+    @apply w-full px-4 py-3 rounded-lg border border-light-border
+           bg-light-card text-light-foreground
+           focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary
+           transition-all duration-200;
+  }
+
+  .form-label {
+    @apply block text-sm font-medium text-light-foreground mb-2;
+  }
+
+  /* Loading animation */
+  .loading-bar {
+    @apply fixed top-0 left-0 h-1 bg-primary z-50;
+    animation: loadingBar 2s ease-out forwards;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animate-fade-up {
+    animation: fadeUp 0.8s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.5s ease-out forwards;
+  }
+
+  .animate-slide-right {
+    animation: slideRight 0.6s ease-out forwards;
+  }
+
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  .stagger-5 { animation-delay: 0.5s; }
+  .stagger-6 { animation-delay: 0.6s; }
+
+  .bg-light { background-color: hsl(var(--light-bg)); }
+  .text-light-foreground { color: hsl(var(--light-foreground)); }
+  .text-light-muted { color: hsl(var(--light-muted)); }
+  .bg-light-card { background-color: hsl(var(--light-card)); }
+  .border-light-border { border-color: hsl(var(--light-border)); }
+
+  .bg-dark { background-color: hsl(var(--postlane-dark)); }
+  .text-dark { color: hsl(var(--postlane-dark)); }
+  .bg-cream { background-color: hsl(var(--postlane-cream)); }
+  .text-cream { color: hsl(var(--postlane-cream)); }
+  .border-cream { border-color: hsl(var(--postlane-cream)); }
+
+  .shadow-glow { box-shadow: var(--shadow-glow); }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideRight {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes loadingBar {
+  0% { width: 0%; }
+  50% { width: 70%; }
+  100% { width: 100%; opacity: 0; }
 }
