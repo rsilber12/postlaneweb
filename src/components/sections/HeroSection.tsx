@@ -86,7 +86,7 @@ export const HeroSection = () => {
       {/* Primary content with parallax - aligned with logo using container-custom */}
       <motion.div 
         style={{ y: contentY, opacity }}
-        className="relative container-custom pt-36 pb-24 lg:pt-40 lg:pb-32 -ml-1"
+        className="relative container-custom pt-36 pb-24 lg:pt-40 lg:pb-32"
       >
         <div className="max-w-4xl">
           {/* Animated badge */}
