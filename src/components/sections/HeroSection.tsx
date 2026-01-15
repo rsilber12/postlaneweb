@@ -28,10 +28,10 @@ export const HeroSection = () => {
           />
         </motion.div>
         
-        {/* Multi-layer gradient overlay for depth */}
-        <div className="absolute inset-0 bg-gradient-to-r from-dark via-dark/95 to-dark/40" />
-        <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/20 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-br from-dark/80 via-transparent to-primary/5" />
+        {/* Multi-layer gradient overlay for depth and text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-dark via-dark/98 to-dark/60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/50 to-dark/30" />
+        <div className="absolute inset-0 bg-gradient-to-br from-dark via-dark/70 to-transparent" />
         
         {/* Animated grid pattern */}
         <div 
@@ -74,7 +74,7 @@ export const HeroSection = () => {
       </div>
 
       {/* Primary content */}
-      <div className="relative container-custom pt-36 pb-24 lg:pt-40 lg:pb-32">
+      <div className="relative container-custom pt-36 pb-24 lg:pt-40 lg:pb-32 pl-6 lg:pl-8">
         <div className="max-w-4xl">
           {/* Animated badge */}
           <motion.div
@@ -87,26 +87,14 @@ export const HeroSection = () => {
             <span className="text-sm text-cream/90 font-medium tracking-wide">Industry Leading EV Infrastructure</span>
           </motion.div>
 
-          {/* Main headline with animated underline */}
+          {/* Main headline */}
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.1, ease: "easeOut" }}
             className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-cream leading-[1.08] mb-8 tracking-tight"
           >
-            EV charging pedestals that are{" "}
-            <span className="relative inline-block">
-              <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/80">
-                easy to order
-              </span>
-              <motion.span
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ delay: 0.9, duration: 0.7, ease: "easeOut" }}
-                className="absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-primary to-primary/40 origin-left rounded-full"
-              />
-            </span>{" "}
-            – and even easier to mount
+            EV charging pedestals that are easy to order – and even easier to mount
           </motion.h1>
 
           {/* Subheadline */}
@@ -154,15 +142,15 @@ export const HeroSection = () => {
           >
             <Link 
               to="/contact" 
-              className="group relative overflow-hidden bg-primary text-dark font-semibold text-lg px-10 py-5 rounded-xl inline-flex items-center justify-center gap-3 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/30 hover:-translate-y-0.5"
+              className="group relative overflow-hidden bg-primary text-dark font-semibold text-base px-7 py-3 rounded-lg inline-flex items-center justify-center gap-2 transition-all duration-300 hover:shadow-xl hover:shadow-primary/25 hover:-translate-y-0.5"
             >
               <span className="relative z-10">Get a Quote</span>
-              <ArrowRight className="w-5 h-5 relative z-10 transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="w-4 h-4 relative z-10 transition-transform group-hover:translate-x-1" />
               <div className="absolute inset-0 bg-gradient-to-r from-primary to-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </Link>
             <a 
               href="#products" 
-              className="group border-2 border-cream/20 text-cream font-semibold text-lg px-10 py-5 rounded-xl inline-flex items-center justify-center gap-2 transition-all duration-300 hover:border-cream/40 hover:bg-cream/5 backdrop-blur-sm"
+              className="group border-2 border-cream/20 text-cream font-semibold text-base px-7 py-3 rounded-lg inline-flex items-center justify-center gap-2 transition-all duration-300 hover:border-cream/40 hover:bg-cream/5 backdrop-blur-sm"
             >
               View Products
             </a>
