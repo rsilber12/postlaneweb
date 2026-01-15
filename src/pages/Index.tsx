@@ -1,7 +1,5 @@
-import { useState } from "react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { LoadingScreen } from "@/components/LoadingScreen";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { StatsSection } from "@/components/sections/StatsSection";
 import { ProductsSection } from "@/components/sections/ProductsSection";
@@ -15,31 +13,24 @@ import { OEMSection } from "@/components/sections/OEMSection";
 import { CTASection } from "@/components/sections/CTASection";
 
 const Index = () => {
-  const [isLoading, setIsLoading] = useState(true);
-
   return (
-    <>
-      <LoadingScreen onComplete={() => setIsLoading(false)} />
-      {!isLoading && (
-        <div className="min-h-screen bg-dark">
-          <Header />
-          <main>
-            <HeroSection />
-            <StatsSection />
-            <ProductsSection />
-            <ProtectionSection />
-            <LogoStripSection />
-            <FeaturesSection />
-            <BenefitsSection />
-            <InstallersSection />
-            <ProcessSection />
-            <OEMSection />
-            <CTASection />
-          </main>
-          <Footer />
-        </div>
-      )}
-    </>
+    <div className="min-h-screen bg-dark">
+      <Header />
+      <main>
+        <HeroSection />
+        <StatsSection />
+        <ProductsSection />
+        <ProtectionSection />
+        <LogoStripSection />
+        <FeaturesSection />
+        <BenefitsSection />
+        <InstallersSection />
+        <ProcessSection />
+        <OEMSection />
+        <CTASection />
+      </main>
+      <Footer />
+    </div>
   );
 };
 
