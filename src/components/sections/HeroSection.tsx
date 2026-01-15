@@ -41,9 +41,8 @@ export const HeroSection = () => {
         </motion.div>
         
         {/* Dark gradient overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-dark via-dark/95 to-dark/40" />
-        <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/20 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-br from-dark/80 via-transparent to-primary/5" />
+        <div className="absolute inset-0 bg-dark/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-dark via-dark/80 to-transparent" />
         
         {/* Animated grid pattern */}
         <div 
