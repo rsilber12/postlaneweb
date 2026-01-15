@@ -36,13 +36,12 @@ export const HeroSection = () => {
           <img
             src={heroBg}
             alt="EV Charging Station"
-            className="w-full h-full object-cover brightness-[0.3]"
+            className="w-full h-full object-cover brightness-[0.5]"
           />
         </motion.div>
         
-        {/* Dark gradient overlay for text readability */}
-        <div className="absolute inset-0 bg-dark/50" />
-        <div className="absolute inset-0 bg-gradient-to-r from-dark via-dark/80 to-transparent" />
+        {/* Dark gradient overlay - dark on left for text, transparent on right for product */}
+        <div className="absolute inset-0 bg-gradient-to-r from-dark via-dark/70 to-transparent" />
         
         {/* Animated grid pattern */}
         <div 
