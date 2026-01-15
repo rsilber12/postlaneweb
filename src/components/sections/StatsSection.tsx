@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 interface CountUpProps {
   end: number;
@@ -63,6 +63,15 @@ const CountUp = ({ end, suffix = "", prefix = "", duration = 2000 }: CountUpProp
 };
 
 export const StatsSection = () => {
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [50, -50]);
+  const rotateX = useTransform(scrollYProgress, [0, 0.5, 1], [5, 0, -5]);
+
   const stats = [
     { value: 10, suffix: "+", label: "Years proven quality" },
     { value: 2500, suffix: "+", label: "Charging stations configured" },
@@ -70,8 +79,11 @@ export const StatsSection = () => {
   ];
 
   return (
-    <section className="bg-dark section-padding border-t border-border">
-      <div className="container-custom">
+    <section ref={sectionRef} className="bg-dark section-padding border-t border-border overflow-hidden">
+      <motion.div 
+        style={{ y, rotateX, transformPerspective: 1000 }}
+        className="container-custom"
+      >
         <AnimatedSection className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-cream mb-4">
             Putting installers in charge since 2018
@@ -99,7 +111,7 @@ export const StatsSection = () => {
             </motion.div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

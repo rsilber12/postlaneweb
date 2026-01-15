@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Clock, Truck, Flag, ArrowRight, Sparkles } from "lucide-react";
+import { useRef } from "react";
 import heroBg from "@/assets/hero-bg.png";
 
 export const HeroSection = () => {
@@ -9,16 +10,27 @@ export const HeroSection = () => {
     { icon: Truck, text: "Nationwide shipping" },
     { icon: Flag, text: "Proudly made in the USA" },
   ];
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 1.1]);
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-dark">
+    <section ref={sectionRef} className="relative min-h-screen flex items-center overflow-hidden bg-dark">
       {/* Background with sophisticated layering */}
       <div className="absolute inset-0">
-        {/* Main background image */}
+        {/* Main background image with parallax */}
         <motion.div
           initial={{ scale: 1.05, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
+          style={{ y: backgroundY, scale }}
           className="absolute inset-0"
         >
           <img
@@ -73,8 +85,11 @@ export const HeroSection = () => {
         />
       </div>
 
-      {/* Primary content */}
-      <div className="relative container-custom pt-36 pb-24 lg:pt-40 lg:pb-32 pl-6 lg:pl-8">
+      {/* Primary content with parallax */}
+      <motion.div 
+        style={{ y: contentY, opacity }}
+        className="relative container-custom pt-36 pb-24 lg:pt-40 lg:pb-32 pl-6 lg:pl-8"
+      >
         <div className="max-w-4xl">
           {/* Animated badge */}
           <motion.div
@@ -156,7 +171,7 @@ export const HeroSection = () => {
             </a>
           </motion.div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Bottom gradient fade */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-dark to-transparent" />
