@@ -35,39 +35,56 @@ export const ProductsSection = () => {
     <section id="products" className="bg-dark section-padding">
       <div className="container-custom">
         <AnimatedSection className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-cream mb-4">
+          <span className="text-sm uppercase tracking-widest text-primary font-medium mb-4 block">
+            Product Catalog
+          </span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-cream">
             Our Product Lines
           </h2>
         </AnimatedSection>
 
         <StaggerContainer 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           staggerDelay={0.1}
         >
           {products.map((product, index) => (
             <StaggerItem key={index}>
-              <div className="card-product group cursor-pointer h-full flex flex-col">
-                {/* Product Image - 21:9 aspect ratio */}
-                <div className="relative aspect-[21/9] mb-6 overflow-hidden rounded-lg bg-cream/5">
+              <div className="group cursor-pointer h-full">
+                {/* Product Image Container - 21:9 aspect ratio with rounded corners */}
+                <div className="relative aspect-[21/9] mb-6 overflow-hidden rounded-2xl bg-gradient-to-br from-cream/10 to-cream/5 border border-cream/10">
+                  {/* Subtle inner glow */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-dark/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  
                   <img 
                     src={product.image} 
                     alt={product.title}
-                    className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-full object-contain p-4 transition-all duration-500 group-hover:scale-110"
                   />
+                  
+                  {/* Hover overlay with CTA */}
+                  <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <span className="bg-primary text-dark px-4 py-2 rounded-lg font-semibold text-sm transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100">
+                      View Details
+                    </span>
+                  </div>
                 </div>
-                <h3 className="text-xl font-semibold text-cream mb-3">
-                  {product.title}
-                </h3>
-                <p className="text-muted-foreground mb-6 flex-grow">
-                  {product.description}
-                </p>
-                <a 
-                  href="#" 
-                  className="inline-flex items-center gap-2 text-primary font-medium group-hover:gap-3 transition-all"
-                >
-                  See products
-                  <ArrowRight className="w-4 h-4" />
-                </a>
+                
+                {/* Product Info */}
+                <div className="px-1">
+                  <h3 className="text-xl font-semibold text-cream mb-2 group-hover:text-primary transition-colors duration-300">
+                    {product.title}
+                  </h3>
+                  <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
+                    {product.description}
+                  </p>
+                  <a 
+                    href="#" 
+                    className="inline-flex items-center gap-2 text-primary font-medium text-sm group-hover:gap-3 transition-all"
+                  >
+                    See products
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                  </a>
+                </div>
               </div>
             </StaggerItem>
           ))}

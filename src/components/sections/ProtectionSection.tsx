@@ -1,5 +1,6 @@
-import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/ui/AnimatedSection";
-import { ArrowRight, Shield, Square } from "lucide-react";
+import { AnimatedSection } from "@/components/ui/AnimatedSection";
+import { ArrowRight, Shield, Square, Zap } from "lucide-react";
+import { motion } from "framer-motion";
 
 export const ProtectionSection = () => {
   const protectionProducts = [
@@ -7,51 +8,91 @@ export const ProtectionSection = () => {
       icon: Shield,
       title: "Bollards",
       description: "Protective steel bollards engineered for EV environments.",
+      color: "from-primary/20 to-emerald-500/10",
     },
     {
       icon: Square,
       title: "Wallards",
       description: "Wall-mounted guards for tighter spaces.",
+      color: "from-blue-500/20 to-primary/10",
     },
   ];
 
   return (
-    <section className="bg-dark section-padding border-t border-border">
-      <div className="container-custom">
+    <section className="relative bg-dark section-padding overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-b from-primary/5 to-transparent rounded-full blur-3xl" />
+      </div>
+
+      <div className="container-custom relative">
+        {/* Header with icon */}
         <AnimatedSection className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-cream mb-4">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/20 mb-6">
+            <Zap className="w-8 h-8 text-primary" />
+          </div>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-cream mb-4">
             Add-on Protection
           </h2>
+          <p className="text-muted-foreground text-lg max-w-xl mx-auto">
+            Complete your installation with industrial-grade protection
+          </p>
         </AnimatedSection>
 
-        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+        {/* Protection cards with unique design */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
           {protectionProducts.map((product, index) => (
-            <StaggerItem key={index}>
-              <div className="card-product group cursor-pointer">
-                <div className="icon-badge">
-                  <product.icon className="w-6 h-6" />
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.15 }}
+              viewport={{ once: true }}
+              className="group relative"
+            >
+              {/* Card with gradient border effect */}
+              <div className="relative p-8 rounded-3xl bg-gradient-to-br from-cream/5 to-transparent border border-cream/10 hover:border-primary/30 transition-all duration-500 overflow-hidden">
+                {/* Gradient background on hover */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${product.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                
+                <div className="relative z-10">
+                  {/* Icon with animated ring */}
+                  <div className="relative mb-6 inline-block">
+                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-cream/10 to-cream/5 flex items-center justify-center border border-cream/10 group-hover:border-primary/30 transition-colors duration-300">
+                      <product.icon className="w-7 h-7 text-cream group-hover:text-primary transition-colors duration-300" />
+                    </div>
+                    {/* Animated ring */}
+                    <div className="absolute inset-0 rounded-2xl border-2 border-primary/0 group-hover:border-primary/30 group-hover:scale-110 transition-all duration-500" />
+                  </div>
+                  
+                  <h3 className="text-2xl font-bold text-cream mb-3 group-hover:text-primary transition-colors duration-300">
+                    {product.title}
+                  </h3>
+                  <p className="text-muted-foreground mb-6 leading-relaxed">
+                    {product.description}
+                  </p>
+                  
+                  <a 
+                    href="#" 
+                    className="inline-flex items-center gap-2 text-cream font-medium group-hover:text-primary transition-all duration-300"
+                  >
+                    <span>See products</span>
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
+                  </a>
                 </div>
-                <h3 className="text-xl font-semibold text-cream mb-3">
-                  {product.title}
-                </h3>
-                <p className="text-muted-foreground mb-6">
-                  {product.description}
-                </p>
-                <a 
-                  href="#" 
-                  className="inline-flex items-center gap-2 text-primary font-medium group-hover:gap-3 transition-all"
-                >
-                  See products
-                  <ArrowRight className="w-4 h-4" />
-                </a>
               </div>
-            </StaggerItem>
+            </motion.div>
           ))}
-        </StaggerContainer>
+        </div>
 
-        <AnimatedSection delay={0.4} className="mt-12 text-center">
-          <a href="#" className="btn-secondary">
-            Download Catalog
+        {/* Download button with glow effect */}
+        <AnimatedSection delay={0.4} className="text-center">
+          <a 
+            href="#" 
+            className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-cream/5 border border-cream/20 text-cream font-semibold hover:border-primary/40 hover:bg-primary/5 transition-all duration-300"
+          >
+            <span>Download Catalog</span>
+            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
           </a>
         </AnimatedSection>
       </div>
