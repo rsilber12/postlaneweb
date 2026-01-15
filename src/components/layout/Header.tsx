@@ -3,11 +3,15 @@ import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone, Download } from "lucide-react";
 import logoLight from "@/assets/logo-light.png";
+import logoDark from "@/assets/logo-dark.png";
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  
+  // Check if we're on a light background page
+  const isLightPage = location.pathname === "/contact";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,7 +40,9 @@ export const Header = () => {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled 
-            ? "bg-dark/95 backdrop-blur-md shadow-lg" 
+            ? isLightPage 
+              ? "bg-light/95 backdrop-blur-md shadow-lg"
+              : "bg-dark/95 backdrop-blur-md shadow-lg" 
             : "bg-transparent"
         }`}
       >
@@ -45,26 +51,25 @@ export const Header = () => {
             {/* Logo */}
             <Link to="/" className="relative z-10">
               <img 
-                src={logoLight} 
+                src={isLightPage ? logoDark : logoLight} 
                 alt="Postlane" 
                 className="h-8 md:h-10 w-auto"
               />
             </Link>
-
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-8">
               {navLinks.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
-                  className="nav-link text-sm"
+                  className={`nav-link text-sm ${isLightPage ? "text-light-foreground hover:text-primary" : ""}`}
                 >
                   {link.label}
                 </a>
               ))}
               <a 
                 href="tel:+15551234567" 
-                className="nav-link text-sm flex items-center gap-2"
+                className={`nav-link text-sm flex items-center gap-2 ${isLightPage ? "text-light-foreground hover:text-primary" : ""}`}
               >
                 <Phone className="w-4 h-4" />
                 (555) 123-4567
@@ -88,7 +93,7 @@ export const Header = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden relative z-10 p-2 text-cream"
+              className={`lg:hidden relative z-10 p-2 ${isLightPage ? "text-light-foreground" : "text-cream"}`}
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
