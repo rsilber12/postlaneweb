@@ -1,4 +1,6 @@
+import { useRef } from "react";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/ui/AnimatedSection";
+import { DepthCard } from "@/components/ui/Parallax3D";
 import { ArrowRight } from "lucide-react";
 import productPedestal from "@/assets/product-pedestal.png";
 
@@ -48,7 +50,8 @@ export const ProductsSection = () => {
           staggerDelay={0.1}
         >
           {products.map((product, index) => (
-            <StaggerItem key={index}>
+            <DepthCard key={index} index={index}>
+              <StaggerItem>
               <div className="group cursor-pointer h-full">
                 {/* Product Image Container - 21:9 aspect ratio with rounded corners */}
                 <div className="relative aspect-[21/9] mb-6 overflow-hidden rounded-2xl bg-gradient-to-br from-cream/10 to-cream/5 border border-cream/10">
@@ -87,6 +90,7 @@ export const ProductsSection = () => {
                 </div>
               </div>
             </StaggerItem>
+            </DepthCard>
           ))}
         </StaggerContainer>
       </div>

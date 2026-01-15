@@ -1,7 +1,18 @@
+import { useRef } from "react";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/ui/AnimatedSection";
+import { Scroll3DSection } from "@/components/ui/Parallax3D";
 import { Cable, Settings, Tag } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 export const FeaturesSection = () => {
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [80, -80]);
+
   const features = [
     {
       icon: Cable,
@@ -21,8 +32,8 @@ export const FeaturesSection = () => {
   ];
 
   return (
-    <section className="section-light section-padding">
-      <div className="container-custom">
+    <section ref={sectionRef} className="section-light section-padding overflow-hidden">
+      <motion.div style={{ y }} className="container-custom">
         <AnimatedSection className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-light-foreground mb-4">
             Have it Your Way
@@ -46,7 +57,7 @@ export const FeaturesSection = () => {
             </StaggerItem>
           ))}
         </StaggerContainer>
-      </div>
+      </motion.div>
     </section>
   );
 };

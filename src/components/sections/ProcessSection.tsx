@@ -1,6 +1,17 @@
+import { useRef } from "react";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/ui/AnimatedSection";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 export const ProcessSection = () => {
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [60, -60]);
+  const rotateX = useTransform(scrollYProgress, [0, 0.5, 1], [6, 0, -6]);
+
   const steps = [
     {
       number: "1",
@@ -20,8 +31,11 @@ export const ProcessSection = () => {
   ];
 
   return (
-    <section id="how-it-works" className="bg-dark section-padding">
-      <div className="container-custom">
+    <section ref={sectionRef} id="how-it-works" className="bg-dark section-padding overflow-hidden">
+      <motion.div 
+        style={{ y, rotateX, transformPerspective: 1200 }}
+        className="container-custom"
+      >
         <AnimatedSection className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-cream mb-4">
             Put Our Pedestals on Speed Dial
@@ -43,7 +57,7 @@ export const ProcessSection = () => {
             </StaggerItem>
           ))}
         </StaggerContainer>
-      </div>
+      </motion.div>
     </section>
   );
 };

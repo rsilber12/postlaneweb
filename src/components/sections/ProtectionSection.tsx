@@ -1,6 +1,7 @@
+import { useRef } from "react";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { ArrowRight, Shield, Square, Zap } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 export const ProtectionSection = () => {
   const protectionProducts = [
@@ -18,14 +19,26 @@ export const ProtectionSection = () => {
     },
   ];
 
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.92, 1, 0.95]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.6, 1, 1, 0.6]);
+
   return (
-    <section className="relative bg-dark section-padding overflow-hidden">
+    <section ref={sectionRef} className="relative bg-dark section-padding overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-b from-primary/5 to-transparent rounded-full blur-3xl" />
       </div>
 
-      <div className="container-custom relative">
+      <motion.div 
+        style={{ scale, opacity }}
+        className="container-custom relative"
+      >
         {/* Header with icon */}
         <AnimatedSection className="text-center mb-16">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/20 mb-6">
@@ -95,7 +108,7 @@ export const ProtectionSection = () => {
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
           </a>
         </AnimatedSection>
-      </div>
+      </motion.div>
     </section>
   );
 };

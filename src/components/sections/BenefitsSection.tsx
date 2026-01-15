@@ -1,6 +1,7 @@
+import { useRef } from "react";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { Users, Wrench, Shield, DollarSign, ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 export const BenefitsSection = () => {
   const benefits = [
@@ -30,15 +31,27 @@ export const BenefitsSection = () => {
     },
   ];
 
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  const rotateX = useTransform(scrollYProgress, [0, 0.5, 1], [8, 0, -8]);
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.95, 1, 0.95]);
+
   return (
-    <section id="why-us" className="relative bg-dark section-padding overflow-hidden">
+    <section ref={sectionRef} id="why-us" className="relative bg-dark section-padding overflow-hidden">
       {/* Decorative background elements */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[150px] -translate-x-1/2 -translate-y-1/2" />
         <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-cream/3 rounded-full blur-[100px] translate-x-1/4 translate-y-1/4" />
       </div>
 
-      <div className="container-custom relative">
+      <motion.div 
+        style={{ rotateX, scale, transformPerspective: 1000 }}
+        className="container-custom relative"
+      >
         <AnimatedSection className="text-center mb-20">
           <span className="text-sm uppercase tracking-widest text-primary font-medium mb-4 block">
             Why Choose Us
@@ -95,7 +108,7 @@ export const BenefitsSection = () => {
             </motion.div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
