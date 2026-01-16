@@ -25,12 +25,7 @@ export const Header = () => {
     setIsMobileMenuOpen(false);
   }, [location]);
 
-  const navLinks = [
-    { label: "Products", href: "/#products" },
-    { label: "Why Us", href: "/#why-us" },
-    { label: "How it Works", href: "/#how-it-works" },
-    { label: "OEMs", href: "/#oem" },
-  ];
+  const navLinks: { label: string; href: string }[] = [];
 
   return (
     <>
