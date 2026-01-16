@@ -34,13 +34,10 @@ export const ProductsSection = () => {
   ];
 
   return (
-    <section id="products" className="bg-dark section-padding">
+    <section id="products" className="bg-emerald-50 section-padding">
       <div className="container-custom">
         <AnimatedSection className="text-center mb-16">
-          <span className="text-sm uppercase tracking-widest text-primary font-medium mb-4 block">
-            Product Catalog
-          </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-cream">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-dark">
             Our Product Lines
           </h2>
         </AnimatedSection>
@@ -52,9 +49,9 @@ export const ProductsSection = () => {
           {products.map((product, index) => (
             <DepthCard key={index} index={index}>
               <StaggerItem>
-              <div className="group cursor-pointer h-full p-4 rounded-2xl border-2 border-cream/20 bg-cream/5 hover:border-primary/40 hover:bg-cream/10 transition-all duration-300">
+              <div className="group cursor-pointer h-full p-4 rounded-2xl border-2 border-dark/10 bg-white hover:border-primary/40 hover:bg-white/80 transition-all duration-300 shadow-sm">
                 {/* Product Image Container - 21:9 aspect ratio with rounded corners */}
-                <div className="relative aspect-[21/9] mb-6 overflow-hidden rounded-xl bg-gradient-to-br from-cream/10 to-cream/5">
+                <div className="relative aspect-[21/9] mb-6 overflow-hidden rounded-xl bg-gradient-to-br from-emerald-100/50 to-emerald-50/30">
                   {/* Subtle inner glow */}
                   <div className="absolute inset-0 bg-gradient-to-t from-dark/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   
@@ -74,7 +71,7 @@ export const ProductsSection = () => {
                 
                 {/* Product Info */}
                 <div className="px-1">
-                  <h3 className="text-xl font-semibold text-cream mb-2 group-hover:text-primary transition-colors duration-300">
+                  <h3 className="text-xl font-semibold text-dark mb-2 group-hover:text-primary transition-colors duration-300">
                     {product.title}
                   </h3>
                   <p className="text-muted-foreground text-sm leading-relaxed">
