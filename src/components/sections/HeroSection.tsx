@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Clock, Truck, Flag, ArrowRight, Sparkles } from "lucide-react";
 import { useRef } from "react";
-import heroBg from "@/assets/hero-bg.png";
+import heroBgVideo from "@/assets/hero-bg.mp4";
 
 export const HeroSection = () => {
   const benefits = [
@@ -33,9 +33,12 @@ export const HeroSection = () => {
           style={{ y: backgroundY, scale }}
           className="absolute inset-0"
         >
-          <img
-            src={heroBg}
-            alt="EV Charging Station"
+          <video
+            src={heroBgVideo}
+            autoPlay
+            loop
+            muted
+            playsInline
             className="w-full h-full object-cover"
           />
         </motion.div>
