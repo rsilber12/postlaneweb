@@ -88,7 +88,7 @@ export const HeroSection = () => {
         style={{ y: contentY, opacity }}
         className="relative container-custom pt-36 pb-24 lg:pt-40 lg:pb-32"
       >
-        <div className="max-w-4xl -ml-36 lg:-ml-72">
+        <div className="max-w-4xl -ml-44 lg:-ml-80">
           {/* Animated badge */}
           <motion.div
             initial={{ opacity: 0, y: 20, scale: 0.9 }}
