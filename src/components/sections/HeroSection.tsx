@@ -39,7 +39,7 @@ export const HeroSection = () => {
             loop
             muted
             playsInline
-            className="w-full h-full object-cover object-center"
+            className="w-full h-full object-cover object-left md:object-center"
           />
         </motion.div>
         
