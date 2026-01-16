@@ -40,8 +40,8 @@ export const HeroSection = () => {
           />
         </motion.div>
         
-        {/* Dark gradient overlay - 70% opacity black on left, transparent on right to show bright product */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 from-20% via-black/50 via-40% to-transparent" />
+        {/* Dark gradient overlay - 85% opacity on left, 30% on right */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/50 to-black/30" />
         
         {/* Animated grid pattern */}
         <div 
