@@ -6,8 +6,11 @@ export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-dark border-t border-border">
-      <div className="container-custom section-padding">
+    <footer className="relative bg-dark border-t border-primary/20 overflow-hidden">
+      {/* Green ambient glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[200px] bg-primary/8 rounded-full blur-[100px]" />
+      
+      <div className="container-custom section-padding relative">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           {/* Brand Column */}
           <div className="lg:col-span-1">

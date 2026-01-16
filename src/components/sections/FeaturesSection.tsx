@@ -32,9 +32,18 @@ export const FeaturesSection = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="section-light section-padding overflow-hidden">
-      <motion.div style={{ y }} className="container-custom">
+    <section ref={sectionRef} className="relative section-light section-padding overflow-hidden">
+      {/* Green accent strip at top */}
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent" />
+      
+      {/* Subtle green glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] bg-primary/10 rounded-full blur-[100px]" />
+
+      <motion.div style={{ y }} className="container-custom relative">
         <AnimatedSection className="text-center mb-16">
+          <span className="inline-block text-sm uppercase tracking-widest text-primary font-semibold mb-4">
+            Customization
+          </span>
           <h2 className="text-3xl md:text-4xl font-bold text-light-foreground mb-4">
             Have it Your Way
           </h2>
@@ -43,11 +52,11 @@ export const FeaturesSection = () => {
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {features.map((feature, index) => (
             <StaggerItem key={index}>
-              <div className="text-center">
-                <div className="icon-badge-light mx-auto">
+              <div className="text-center group">
+                <div className="icon-badge-light mx-auto group-hover:shadow-glow transition-shadow duration-300">
                   <feature.icon className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-semibold text-light-foreground mb-3">
+                <h3 className="text-xl font-semibold text-light-foreground mb-3 group-hover:text-primary transition-colors">
                   {feature.title}
                 </h3>
                 <p className="text-light-muted">

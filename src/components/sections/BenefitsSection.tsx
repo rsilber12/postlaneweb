@@ -42,18 +42,22 @@ export const BenefitsSection = () => {
 
   return (
     <section ref={sectionRef} id="why-us" className="relative bg-dark section-padding overflow-hidden">
-      {/* Decorative background elements */}
+      {/* Vibrant green decorative background elements */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[150px] -translate-x-1/2 -translate-y-1/2" />
-        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-cream/3 rounded-full blur-[100px] translate-x-1/4 translate-y-1/4" />
+        <div className="absolute top-1/2 left-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[150px] -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-primary/8 rounded-full blur-[120px] translate-x-1/4 translate-y-1/4" />
+        <div className="absolute top-1/4 right-1/4 w-[300px] h-[300px] bg-primary/5 rounded-full blur-[80px]" />
       </div>
+
+      {/* Green accent lines */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
 
       <motion.div 
         style={{ rotateX, scale, transformPerspective: 1000 }}
         className="container-custom relative"
       >
         <AnimatedSection className="text-center mb-20">
-          <span className="text-sm uppercase tracking-widest text-primary font-medium mb-4 block">
+          <span className="inline-block text-sm uppercase tracking-widest text-primary font-medium mb-4 px-4 py-2 rounded-full bg-primary/10 border border-primary/20">
             Why Choose Us
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-cream mb-4">
