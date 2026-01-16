@@ -49,7 +49,7 @@ export const ProductsSection = () => {
           {products.map((product, index) => (
             <DepthCard key={index} index={index}>
               <StaggerItem>
-              <div className="group cursor-pointer h-full p-4 rounded-2xl border-2 border-dark/10 bg-white hover:border-primary/40 hover:bg-white/80 transition-all duration-300 shadow-sm">
+              <div className="group cursor-pointer h-full p-4 rounded-2xl border-2 border-primary/40 bg-white hover:border-primary hover:bg-white/80 transition-all duration-300 shadow-sm">
                 {/* Product Image Container - 21:9 aspect ratio with rounded corners */}
                 <div className="relative aspect-[21/9] mb-6 overflow-hidden rounded-xl bg-gradient-to-br from-emerald-100/50 to-emerald-50/30">
                   {/* Subtle inner glow */}
