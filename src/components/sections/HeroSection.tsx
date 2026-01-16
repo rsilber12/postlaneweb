@@ -39,7 +39,7 @@ export const HeroSection = () => {
             loop
             muted
             playsInline
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover scale-[0.6] md:scale-100"
           />
         </motion.div>
         
