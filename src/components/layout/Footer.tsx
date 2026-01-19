@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin } from "lucide-react";
 import logoLight from "@/assets/logo-light.png";
 
 export const Footer = () => {
@@ -122,9 +122,17 @@ export const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-16 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
           <p>© {currentYear} Postlane. All rights reserved.</p>
-          <div className="flex gap-6">
+          <div className="flex items-center gap-6">
             <a href="#" className="hover:text-cream transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-cream transition-colors">Terms of Service</a>
+            <a 
+              href="https://linkedin.com" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-cream/80 hover:text-primary transition-colors"
+            >
+              <Linkedin className="w-5 h-5" />
+            </a>
           </div>
         </div>
       </div>
