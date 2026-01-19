@@ -46,7 +46,7 @@ export const Header = () => {
             {/* Logo */}
             <Link to="/" className="relative z-10">
               <img 
-                src={isLightPage ? logoDark : logoLight} 
+                src={logoLight} 
                 alt="Postlane" 
                 className="h-8 md:h-10 w-auto"
               />
