@@ -57,14 +57,14 @@ export const Header = () => {
                 <a
                   key={link.label}
                   href={link.href}
-                  className={`nav-link text-sm ${isLightPage ? "text-light-foreground hover:text-primary" : ""}`}
+                  className="nav-link text-sm"
                 >
                   {link.label}
                 </a>
               ))}
               <a 
                 href="tel:+15551234567" 
-                className={`nav-link text-sm flex items-center gap-2 ${isLightPage ? "text-light-foreground hover:text-primary" : ""}`}
+                className="nav-link text-sm flex items-center gap-2"
               >
                 <Phone className="w-4 h-4" />
                 (555) 123-4567
@@ -88,7 +88,7 @@ export const Header = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`lg:hidden relative z-10 p-2 ${isLightPage ? "text-light-foreground" : "text-cream"}`}
+              className="lg:hidden relative z-10 p-2 text-cream"
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
