@@ -5,6 +5,9 @@ export const LogoStripSection = () => {
   return (
     <section className="bg-dark py-12 border-t border-border overflow-hidden">
       <div className="container-custom">
+        <h3 className="text-center text-cream/60 text-sm font-medium uppercase tracking-wider mb-8">
+          Compatible with:
+        </h3>
         <div className="flex flex-wrap justify-center items-center gap-10 md:gap-14 lg:gap-20">
           {[...Array(5)].map((_, index) => (
             <motion.div

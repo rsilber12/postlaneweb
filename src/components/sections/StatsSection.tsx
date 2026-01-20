@@ -73,7 +73,7 @@ export const StatsSection = () => {
   const rotateX = useTransform(scrollYProgress, [0, 0.5, 1], [5, 0, -5]);
 
   const stats = [
-    { value: 2, suffix: "+", label: "Years proven quality" },
+    { value: 10, suffix: "+", label: "Years proven quality" },
     { value: 2500, suffix: "+", label: "Charging stations configured" },
     { value: 100, suffix: "%", label: "Repeat customer base" },
   ];

@@ -64,18 +64,18 @@ export const Header = () => {
                 </a>
               ))}
               <a 
-                href="tel:+15551234567" 
+                href="tel:+17183551808" 
                 className="nav-link text-sm flex items-center gap-2"
               >
                 <Phone className="w-4 h-4" />
-                (555) 123-4567
+                718.355.1808
               </a>
             </nav>
 
             {/* Desktop CTA Buttons */}
             <div className="hidden lg:flex items-center gap-4">
               <a 
-                href="https://wa.me/15551234567" 
+                href="https://wa.me/17183551808" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-cream hover:text-primary transition-colors"
@@ -131,14 +131,14 @@ export const Header = () => {
                 </motion.a>
               ))}
               <motion.a
-                href="tel:+15551234567"
+                href="tel:+17183551808"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.4 }}
                 className="text-lg text-cream/80 flex items-center gap-2"
               >
                 <Phone className="w-5 h-5" />
-                (555) 123-4567
+                718.355.1808
               </motion.a>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}

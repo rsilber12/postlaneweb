@@ -24,18 +24,18 @@ export const Footer = () => {
             </p>
             <div className="flex flex-col gap-3 text-sm">
               <a 
-                href="tel:+15551234567" 
+                href="tel:+17183551808" 
                 className="text-cream/80 hover:text-cream flex items-center gap-2 transition-colors"
               >
                 <Phone className="w-4 h-4 text-primary" />
-                (555) 123-4567
+                718.355.1808
               </a>
               <a 
-                href="mailto:sales@postlane.com" 
+                href="mailto:Info@postlaneusa.com" 
                 className="text-cream/80 hover:text-cream flex items-center gap-2 transition-colors"
               >
                 <Mail className="w-4 h-4 text-primary" />
-                sales@postlane.com
+                Info@postlaneusa.com
               </a>
               <span className="text-cream/80 flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-primary" />

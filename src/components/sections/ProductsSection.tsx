@@ -57,21 +57,11 @@ export const ProductsSection = () => {
               <div className="group cursor-pointer h-full p-4 rounded-2xl border-2 border-primary/40 bg-white hover:border-primary hover:bg-white/80 transition-all duration-300 shadow-sm">
                 {/* Product Image Container - 21:9 aspect ratio with rounded corners */}
                 <div className="relative aspect-[21/9] mb-6 overflow-hidden rounded-xl bg-gradient-to-br from-emerald-100/50 to-emerald-50/30">
-                  {/* Subtle inner glow */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-dark/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  
                   <img 
                     src={product.image} 
                     alt={product.title}
                     className="w-full h-full object-cover scale-125 transition-all duration-500 group-hover:scale-150"
                   />
-                  
-                  {/* Hover overlay with CTA */}
-                  <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <span className="bg-primary text-dark px-4 py-2 rounded-lg font-semibold text-sm transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100">
-                      View Details
-                    </span>
-                  </div>
                 </div>
                 
                 {/* Product Info */}
@@ -88,6 +78,17 @@ export const ProductsSection = () => {
             </DepthCard>
           ))}
         </StaggerContainer>
+
+        {/* Download Brochure Button */}
+        <AnimatedSection className="text-center mt-12">
+          <a 
+            href="#" 
+            className="inline-flex items-center gap-2 bg-dark text-cream font-semibold px-8 py-4 rounded-xl hover:bg-dark/90 transition-all duration-300 hover:shadow-xl"
+          >
+            <ArrowRight className="w-5 h-5" />
+            Download Brochure
+          </a>
+        </AnimatedSection>
       </div>
     </section>
   );
