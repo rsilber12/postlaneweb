@@ -2,9 +2,9 @@ import { useRef } from "react";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/ui/AnimatedSection";
 import { DepthCard } from "@/components/ui/Parallax3D";
 import { ArrowRight } from "lucide-react";
-import productPedestal from "@/assets/product-pedestal.png";
 import universal5ftPedestal from "@/assets/universal-5ft-pedestal.jpeg";
 import slim4ftPedestal from "@/assets/4ft-slim-pedestal.jpeg";
+import productComingSoon from "@/assets/product-coming-soon.jpeg";
 
 export const ProductsSection = () => {
   const products = [
@@ -14,7 +14,7 @@ export const ProductsSection = () => {
       description: "Standard mounting pedestal for most EV chargers",
     },
     {
-      image: productPedestal,
+      image: productComingSoon,
       title: "Universal Cable Management Pedestal",
       description: "Built-in spring or counterweight cable retraction system",
     },
@@ -24,17 +24,17 @@ export const ProductsSection = () => {
       description: "Compact design for tight parking installations",
     },
     {
-      image: productPedestal,
+      image: productComingSoon,
       title: "Counterweight Slim Pedestal",
       description: "Space-saving design with integrated cable management",
     },
     {
-      image: productPedestal,
+      image: productComingSoon,
       title: "Loop Pedestal",
       description: "Unique loop-style mounting configuration",
     },
     {
-      image: productPedestal,
+      image: productComingSoon,
       title: "Add-On Protection",
       description: "Bollards and wallards engineered for EV environments",
     },
