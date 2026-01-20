@@ -62,12 +62,12 @@ export const ProtectionSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.15 }}
               viewport={{ once: true }}
-              className="group relative"
+              className="group relative h-full"
             >
               {/* Card with gradient border effect */}
-              <div className="relative rounded-3xl bg-gradient-to-br from-cream/5 to-transparent border border-cream/10 hover:border-primary/30 transition-all duration-500 overflow-hidden">
-                {/* Product Image */}
-                <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-cream/5 to-cream/10">
+              <div className="relative h-full flex flex-col rounded-3xl bg-gradient-to-br from-cream/5 to-transparent border border-cream/10 hover:border-primary/30 transition-all duration-500 overflow-hidden">
+                {/* Product Image - Fixed height */}
+                <div className="relative h-64 overflow-hidden bg-gradient-to-br from-cream/5 to-cream/10">
                   <img 
                     src={product.image} 
                     alt={product.title}
@@ -77,18 +77,18 @@ export const ProtectionSection = () => {
                   <div className={`absolute inset-0 bg-gradient-to-t ${product.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
                 </div>
                 
-                {/* Content */}
-                <div className="p-8">
+                {/* Content - Fixed height */}
+                <div className="p-8 flex flex-col flex-1">
                   <h3 className="text-2xl font-bold text-cream mb-3 group-hover:text-primary transition-colors duration-300">
                     {product.title}
                   </h3>
-                  <p className="text-muted-foreground mb-6 leading-relaxed">
+                  <p className="text-muted-foreground mb-6 leading-relaxed flex-1">
                     {product.description}
                   </p>
                   
                   <a 
                     href="#" 
-                    className="inline-flex items-center gap-2 text-cream font-medium group-hover:text-primary transition-all duration-300"
+                    className="inline-flex items-center gap-2 text-cream font-medium group-hover:text-primary transition-all duration-300 mt-auto"
                   >
                     <span>See products</span>
                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
