@@ -2,10 +2,12 @@ import { useState } from "react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
-import { Phone, Mail, Clock, Upload, X, Check } from "lucide-react";
+import { Phone, Mail, Clock, Upload, X, Check, Loader2 } from "lucide-react";
 import { motion } from "framer-motion";
+import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
+  const { toast } = useToast();
   const [formData, setFormData] = useState({
     company: "",
     email: "",
@@ -16,6 +18,7 @@ const Contact = () => {
   });
   const [productInterests, setProductInterests] = useState<string[]>([]);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const projectTypes = [
@@ -49,10 +52,66 @@ const Contact = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate form submission
-    setIsSubmitted(true);
+    
+    // Validate required fields
+    if (!formData.company || !formData.email || !formData.phone || !formData.projectType || !formData.quantity) {
+      toast({
+        title: "Missing Required Fields",
+        description: "Please fill in all required fields.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (productInterests.length === 0) {
+      toast({
+        title: "Product Interest Required",
+        description: "Please select at least one product interest.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      // Prepare form data for Formsubmit.co
+      const submitData = new FormData();
+      submitData.append("company", formData.company.trim());
+      submitData.append("email", formData.email.trim());
+      submitData.append("phone", formData.phone.trim());
+      submitData.append("projectType", formData.projectType);
+      submitData.append("productInterests", productInterests.join(", "));
+      submitData.append("quantity", formData.quantity.trim());
+      submitData.append("message", formData.message.trim());
+      submitData.append("_subject", `New Quote Request from ${formData.company.trim()}`);
+      submitData.append("_template", "table");
+      
+      // Send to Formsubmit.co
+      const response = await fetch("https://formsubmit.co/ajax/Info@postlaneusa.com", {
+        method: "POST",
+        body: submitData,
+      });
+
+      const result = await response.json();
+
+      if (result.success === "true" || result.success === true) {
+        setIsSubmitted(true);
+      } else {
+        throw new Error("Form submission failed");
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      toast({
+        title: "Submission Failed",
+        description: "There was an error submitting your request. Please try again or contact us directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (isSubmitted) {
@@ -252,8 +311,19 @@ const Contact = () => {
                 </div>
 
                 {/* Submit */}
-                <button type="submit" className="btn-primary w-full text-lg py-4">
-                  GET IN TOUCH
+                <button 
+                  type="submit" 
+                  disabled={isSubmitting}
+                  className="btn-primary w-full text-lg py-4 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-5 h-5 animate-spin" />
+                      Submitting...
+                    </>
+                  ) : (
+                    "GET IN TOUCH"
+                  )}
                 </button>
               </form>
             </AnimatedSection>
