@@ -53,8 +53,8 @@ export const ProductsSection = () => {
         >
           {products.map((product, index) => (
             <DepthCard key={index} index={index}>
-              <StaggerItem>
-              <div className="group cursor-pointer h-full p-4 rounded-2xl border-2 border-primary/40 bg-white hover:border-primary hover:bg-white/80 transition-all duration-300 shadow-sm">
+              <StaggerItem className="h-full">
+              <div className="group cursor-pointer h-full p-4 rounded-2xl border-2 border-primary/40 bg-white hover:border-primary hover:bg-white/80 transition-all duration-300 shadow-sm flex flex-col">
                 {/* Product Image Container - 21:9 aspect ratio with rounded corners */}
                 <div className="relative aspect-[21/9] mb-6 overflow-hidden rounded-xl bg-gradient-to-br from-emerald-100/50 to-emerald-50/30">
                   <img 
@@ -65,7 +65,7 @@ export const ProductsSection = () => {
                 </div>
                 
                 {/* Product Info */}
-                <div className="px-1">
+                <div className="px-1 flex flex-col flex-1">
                   <h3 className="text-xl font-semibold text-dark mb-2 group-hover:text-primary transition-colors duration-300">
                     {product.title}
                   </h3>
