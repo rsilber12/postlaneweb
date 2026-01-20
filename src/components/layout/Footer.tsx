@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { Mail, Phone, MapPin, Linkedin } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
+import { FaLinkedinIn } from "react-icons/fa";
 import logoLight from "@/assets/logo-light.png";
 
 export const Footer = () => {
@@ -131,7 +132,7 @@ export const Footer = () => {
               rel="noopener noreferrer" 
               className="text-cream/80 hover:text-primary transition-colors"
             >
-              <Linkedin className="w-5 h-5" />
+              <FaLinkedinIn className="w-5 h-5" />
             </a>
           </div>
         </div>
