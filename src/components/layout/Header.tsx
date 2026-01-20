@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Phone, Download, MessageCircle } from "lucide-react";
+import { Menu, X, Phone, Download } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import logoLight from "@/assets/logo-light.png";
 import logoDark from "@/assets/logo-dark.png";
 
@@ -80,7 +81,7 @@ export const Header = () => {
                 className="text-cream hover:text-primary transition-colors"
                 aria-label="WhatsApp"
               >
-                <MessageCircle className="w-5 h-5" />
+                <FaWhatsapp className="w-5 h-5" />
               </a>
               <Link to="/contact" className="btn-primary text-sm">
                 Get a Quote
