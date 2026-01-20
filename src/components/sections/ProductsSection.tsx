@@ -3,11 +3,12 @@ import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/ui/
 import { DepthCard } from "@/components/ui/Parallax3D";
 import { ArrowRight } from "lucide-react";
 import productPedestal from "@/assets/product-pedestal.png";
+import universal5ftPedestal from "@/assets/universal-5ft-pedestal.jpeg";
 
 export const ProductsSection = () => {
   const products = [
     {
-      image: productPedestal,
+      image: universal5ftPedestal,
       title: "Universal 5ft Pedestal",
       description: "Standard mounting pedestal for most EV chargers",
     },
@@ -56,11 +57,11 @@ export const ProductsSection = () => {
               <StaggerItem>
               <div className="group cursor-pointer h-full flex flex-col p-4 rounded-2xl border-2 border-primary/40 bg-white hover:border-primary hover:bg-white/80 transition-all duration-300 shadow-sm">
                 {/* Product Image Container - Fixed height */}
-                <div className="relative h-48 mb-6 overflow-hidden rounded-xl bg-gradient-to-br from-emerald-100/50 to-emerald-50/30">
+                <div className="relative h-48 mb-6 overflow-hidden rounded-xl bg-white">
                   <img 
                     src={product.image} 
                     alt={product.title}
-                    className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
+                    className="w-full h-full object-contain transition-all duration-500 group-hover:scale-110"
                   />
                 </div>
                 
