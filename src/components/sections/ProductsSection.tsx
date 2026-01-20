@@ -5,6 +5,7 @@ import { ArrowRight } from "lucide-react";
 import universal5ftPedestal from "@/assets/universal-5ft-pedestal.jpeg";
 import slim4ftPedestal from "@/assets/4ft-slim-pedestal.jpeg";
 import productComingSoon from "@/assets/product-coming-soon.jpeg";
+import universalCableManagement from "@/assets/universal-cable-management-pedestal.jpeg";
 
 export const ProductsSection = () => {
   const products = [
@@ -14,7 +15,7 @@ export const ProductsSection = () => {
       description: "Standard mounting pedestal for most EV chargers",
     },
     {
-      image: productComingSoon,
+      image: universalCableManagement,
       title: "Universal Cable Management Pedestal",
       description: "Built-in spring or counterweight cable retraction system",
     },
