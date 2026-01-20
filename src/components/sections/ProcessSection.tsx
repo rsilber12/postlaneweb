@@ -31,7 +31,7 @@ export const ProcessSection = () => {
   ];
 
   return (
-    <section ref={sectionRef} id="how-it-works" className="relative bg-dark section-padding overflow-hidden">
+    <section ref={sectionRef} id="process" className="relative bg-dark section-padding overflow-hidden">
       {/* Green accent elements */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/8 rounded-full blur-[150px]" />

@@ -25,7 +25,7 @@ export const InstallersSection = () => {
   ];
 
   return (
-    <section className="section-light section-padding">
+    <section id="installers" className="section-light section-padding">
       <div className="container-custom">
         <AnimatedSection className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-light-foreground mb-4">
