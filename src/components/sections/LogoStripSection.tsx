@@ -1,7 +1,16 @@
 import { motion } from "framer-motion";
+import teslaLogo from "@/assets/tesla-logo.svg";
 import logoLight from "@/assets/logo-light.png";
 
 export const LogoStripSection = () => {
+  const logos = [
+    { src: teslaLogo, alt: "Tesla" },
+    { src: logoLight, alt: "ChargePoint" },
+    { src: logoLight, alt: "ABB" },
+    { src: logoLight, alt: "Siemens" },
+    { src: logoLight, alt: "Schneider" },
+  ];
+
   return (
     <section className="bg-dark py-12 border-t border-border overflow-hidden">
       <div className="container-custom">
@@ -9,7 +18,7 @@ export const LogoStripSection = () => {
           Compatible with:
         </h3>
         <div className="flex flex-wrap justify-center items-center gap-10 md:gap-14 lg:gap-20">
-          {[...Array(5)].map((_, index) => (
+          {logos.map((logo, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 10 }}
@@ -19,8 +28,8 @@ export const LogoStripSection = () => {
               className="opacity-50 hover:opacity-80 transition-opacity duration-300"
             >
               <img 
-                src={logoLight} 
-                alt="Postlane" 
+                src={logo.src} 
+                alt={logo.alt} 
                 className="h-6 md:h-8 w-auto brightness-0 invert"
               />
             </motion.div>
