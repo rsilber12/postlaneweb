@@ -82,17 +82,9 @@ export const ProtectionSection = () => {
                   <h3 className="text-2xl font-bold text-cream mb-3 group-hover:text-primary transition-colors duration-300">
                     {product.title}
                   </h3>
-                  <p className="text-muted-foreground mb-6 leading-relaxed flex-1">
+                  <p className="text-muted-foreground leading-relaxed flex-1">
                     {product.description}
                   </p>
-                  
-                  <a 
-                    href="#" 
-                    className="inline-flex items-center gap-2 text-cream font-medium group-hover:text-primary transition-all duration-300 mt-auto"
-                  >
-                    <span>See products</span>
-                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
-                  </a>
                 </div>
               </div>
             </motion.div>

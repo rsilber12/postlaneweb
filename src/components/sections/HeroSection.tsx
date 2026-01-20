@@ -22,7 +22,7 @@ export const HeroSection = () => {
   const scale = useTransform(scrollYProgress, [0, 0.5], [1, 1.1]);
 
   return (
-    <section ref={sectionRef} className="relative min-h-screen flex items-center overflow-hidden bg-dark">
+    <section ref={sectionRef} id="hero" className="relative min-h-screen flex items-center overflow-hidden bg-dark">
       {/* Background with sophisticated layering */}
       <div className="absolute inset-0">
         {/* Main background image with parallax */}
