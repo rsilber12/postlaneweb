@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import teslaLogo from "@/assets/tesla-logo.svg";
 import autelLogo from "@/assets/autel-logo.svg";
 import chargepointLogo from "@/assets/chargepoint-logo.svg";
@@ -8,12 +7,12 @@ import wallboxLogo from "@/assets/wallbox-logo.svg";
 
 export const LogoStripSection = () => {
   const logos = [
-    { src: teslaLogo, alt: "Tesla", size: "h-10 md:h-12" },
-    { src: autelLogo, alt: "Autel", size: "h-6 md:h-7" },
-    { src: chargepointLogo, alt: "ChargePoint", size: "h-8 md:h-10" },
-    { src: zerovaLogo, alt: "Zerova", size: "h-6 md:h-7" },
-    { src: swtchLogo, alt: "SWTCH", size: "h-8 md:h-10" },
-    { src: wallboxLogo, alt: "Wallbox", size: "h-10 md:h-12" },
+    { src: teslaLogo, alt: "Tesla" },
+    { src: autelLogo, alt: "Autel" },
+    { src: chargepointLogo, alt: "ChargePoint" },
+    { src: zerovaLogo, alt: "Zerova" },
+    { src: swtchLogo, alt: "SWTCH" },
+    { src: wallboxLogo, alt: "Wallbox" },
   ];
 
   return (
@@ -24,20 +23,16 @@ export const LogoStripSection = () => {
         </h3>
         <div className="flex flex-wrap justify-center items-center gap-10 md:gap-14 lg:gap-20">
           {logos.map((logo, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="opacity-50 hover:opacity-80 transition-opacity duration-300 flex items-center justify-center h-12"
+              className="opacity-60 hover:opacity-90 transition-opacity duration-300"
             >
               <img 
                 src={logo.src} 
                 alt={logo.alt} 
-                className={`w-auto brightness-0 invert ${logo.size}`}
+                className="h-8 w-auto brightness-0 invert"
               />
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
