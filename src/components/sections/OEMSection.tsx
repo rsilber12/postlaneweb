@@ -90,7 +90,7 @@ export const OEMSection = () => {
           <AnimatedSection delay={0.4}>
             <div className="flex flex-col sm:flex-row justify-center gap-4 items-center">
               <a 
-                href="tel:+15551234567"
+                href="tel:+17183551808"
                 className="group flex items-center gap-3 bg-dark text-cream font-semibold px-8 py-4 rounded-xl hover:bg-dark/90 transition-all duration-300 hover:shadow-2xl hover:shadow-dark/30"
               >
                 <Phone className="w-5 h-5" />
