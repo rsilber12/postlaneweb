@@ -1,18 +1,19 @@
 import { useRef } from "react";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
-import { ArrowRight, Shield, Square, Zap } from "lucide-react";
+import { ArrowRight, Zap } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import productPedestal from "@/assets/product-pedestal.png";
 
 export const ProtectionSection = () => {
   const protectionProducts = [
     {
-      icon: Shield,
+      image: productPedestal, // Replace with actual bollards image
       title: "Bollards",
       description: "Protective steel bollards engineered for EV environments.",
       color: "from-primary/20 to-emerald-500/10",
     },
     {
-      icon: Square,
+      image: productPedestal, // Replace with actual wallards image
       title: "Wallards",
       description: "Wall-mounted guards for tighter spaces.",
       color: "from-blue-500/20 to-primary/10",
@@ -52,7 +53,7 @@ export const ProtectionSection = () => {
           </p>
         </AnimatedSection>
 
-        {/* Protection cards with unique design */}
+        {/* Protection cards with images */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
           {protectionProducts.map((product, index) => (
             <motion.div
@@ -64,20 +65,20 @@ export const ProtectionSection = () => {
               className="group relative"
             >
               {/* Card with gradient border effect */}
-              <div className="relative p-8 rounded-3xl bg-gradient-to-br from-cream/5 to-transparent border border-cream/10 hover:border-primary/30 transition-all duration-500 overflow-hidden">
-                {/* Gradient background on hover */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${product.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+              <div className="relative rounded-3xl bg-gradient-to-br from-cream/5 to-transparent border border-cream/10 hover:border-primary/30 transition-all duration-500 overflow-hidden">
+                {/* Product Image */}
+                <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-cream/5 to-cream/10">
+                  <img 
+                    src={product.image} 
+                    alt={product.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  {/* Gradient overlay */}
+                  <div className={`absolute inset-0 bg-gradient-to-t ${product.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                </div>
                 
-                <div className="relative z-10">
-                  {/* Icon with animated ring */}
-                  <div className="relative mb-6 inline-block">
-                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-cream/10 to-cream/5 flex items-center justify-center border border-cream/10 group-hover:border-primary/30 transition-colors duration-300">
-                      <product.icon className="w-7 h-7 text-cream group-hover:text-primary transition-colors duration-300" />
-                    </div>
-                    {/* Animated ring */}
-                    <div className="absolute inset-0 rounded-2xl border-2 border-primary/0 group-hover:border-primary/30 group-hover:scale-110 transition-all duration-500" />
-                  </div>
-                  
+                {/* Content */}
+                <div className="p-8">
                   <h3 className="text-2xl font-bold text-cream mb-3 group-hover:text-primary transition-colors duration-300">
                     {product.title}
                   </h3>
