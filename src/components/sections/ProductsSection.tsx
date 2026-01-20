@@ -35,8 +35,8 @@ export const ProductsSection = () => {
     },
     {
       image: productComingSoon,
-      title: "Add-On Protection",
-      description: "Bollards and wallards engineered for EV environments",
+      title: "Pedestal",
+      description: "",
     },
   ];
 
