@@ -45,13 +45,13 @@ export const Header = () => {
         <div className="container-custom">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <Link to="/" className="relative z-10">
+            <a href="#hero" className="relative z-10">
               <img 
                 src={logoLight} 
                 alt="Postlane" 
                 className="h-8 md:h-10 w-auto"
               />
-            </Link>
+            </a>
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-8">
               {navLinks.map((link) => (
