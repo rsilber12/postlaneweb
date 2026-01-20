@@ -31,13 +31,18 @@ export const ProductsSection = () => {
       title: "Loop Pedestal",
       description: "Unique loop-style mounting configuration",
     },
+    {
+      image: productPedestal,
+      title: "Dual Charger Pedestal",
+      description: "Side-by-side mounting for two charging stations",
+    },
   ];
 
   return (
-    <section id="products" className="bg-emerald-50 section-padding">
+    <section id="products" className="bg-primary section-padding">
       <div className="container-custom">
         <AnimatedSection className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-dark">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-dark/90">
             Our Product Lines
           </h2>
         </AnimatedSection>
