@@ -4,6 +4,7 @@ import { DepthCard } from "@/components/ui/Parallax3D";
 import { ArrowRight } from "lucide-react";
 import productPedestal from "@/assets/product-pedestal.png";
 import universal5ftPedestal from "@/assets/universal-5ft-pedestal.jpeg";
+import slim4ftPedestal from "@/assets/4ft-slim-pedestal.jpeg";
 
 export const ProductsSection = () => {
   const products = [
@@ -18,7 +19,7 @@ export const ProductsSection = () => {
       description: "Built-in spring or counterweight cable retraction system",
     },
     {
-      image: productPedestal,
+      image: slim4ftPedestal,
       title: "4ft Slim Pedestal",
       description: "Compact design for tight parking installations",
     },
@@ -55,9 +56,9 @@ export const ProductsSection = () => {
           {products.map((product, index) => (
             <DepthCard key={index} index={index}>
               <StaggerItem>
-              <div className="group cursor-pointer h-full flex flex-col p-4 rounded-2xl border-2 border-primary/40 bg-white hover:border-primary hover:bg-white/80 transition-all duration-300 shadow-sm">
+              <div className="group cursor-pointer flex flex-col p-4 rounded-2xl border-2 border-primary/40 bg-white hover:border-primary hover:bg-white/80 transition-all duration-300 shadow-sm h-[340px]">
                 {/* Product Image Container - Fixed height */}
-                <div className="relative h-48 mb-6 overflow-hidden rounded-xl bg-white">
+                <div className="relative h-48 mb-4 overflow-hidden rounded-xl bg-white flex-shrink-0">
                   <img 
                     src={product.image} 
                     alt={product.title}
@@ -65,12 +66,12 @@ export const ProductsSection = () => {
                   />
                 </div>
                 
-                {/* Product Info - Flex grow to fill space */}
-                <div className="px-1 flex flex-col flex-1">
-                  <h3 className="text-xl font-semibold text-dark mb-2 group-hover:text-primary transition-colors duration-300">
+                {/* Product Info - Fixed height */}
+                <div className="px-1 flex flex-col">
+                  <h3 className="text-xl font-semibold text-dark mb-2 group-hover:text-primary transition-colors duration-300 line-clamp-1">
                     {product.title}
                   </h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed flex-1">
+                  <p className="text-muted-foreground text-sm leading-relaxed line-clamp-2">
                     {product.description}
                   </p>
                 </div>
