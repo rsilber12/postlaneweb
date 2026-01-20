@@ -3,7 +3,7 @@ import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { ArrowRight, Zap } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import bollardProduct from "@/assets/bollard-product.jpeg";
-import productPedestal from "@/assets/product-pedestal.png";
+import wallardProduct from "@/assets/wallard-product.jpeg";
 
 export const ProtectionSection = () => {
   const protectionProducts = [
@@ -14,7 +14,7 @@ export const ProtectionSection = () => {
       color: "from-primary/20 to-emerald-500/10",
     },
     {
-      image: productPedestal, // Replace with actual wallards image
+      image: wallardProduct,
       title: "Wallards",
       description: "Wall-mounted guards for tighter spaces.",
       color: "from-blue-500/20 to-primary/10",
