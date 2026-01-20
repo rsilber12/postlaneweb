@@ -75,7 +75,7 @@ export const Header = () => {
             {/* Desktop CTA Buttons */}
             <div className="hidden lg:flex items-center gap-4">
               <a 
-                href="https://wa.me/17183551808" 
+                href="https://api.whatsapp.com/send?phone=17183551808" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-cream hover:text-primary transition-colors"
