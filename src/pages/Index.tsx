@@ -25,9 +25,9 @@ const Index = () => {
         <LogoStripSection />
         <FeaturesSection />
         <BenefitsSection />
+        <PartnersSection />
         <InstallersSection />
         <ProcessSection />
-        <PartnersSection />
         <OEMSection />
         <CTASection />
         <CTASection />
