@@ -25,12 +25,12 @@ export const LogoStripSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="opacity-50 hover:opacity-80 transition-opacity duration-300"
+              className="opacity-50 hover:opacity-80 transition-opacity duration-300 flex items-center justify-center"
             >
               <img 
                 src={logo.src} 
                 alt={logo.alt} 
-                className="h-6 md:h-8 w-auto brightness-0 invert"
+                className={`w-auto brightness-0 invert ${index === 0 ? 'h-8 md:h-10' : 'h-6 md:h-8'}`}
               />
             </motion.div>
           ))}
