@@ -20,7 +20,7 @@ export const Footer = () => {
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed mb-6">
               Premium EV charging pedestals manufactured in the USA. 
-              Trusted by installers nationwide since 2018.
+              Trusted by installers nationwide since 2023.
             </p>
             <div className="flex flex-col gap-3 text-sm">
               <a 

@@ -73,7 +73,7 @@ export const StatsSection = () => {
   const rotateX = useTransform(scrollYProgress, [0, 0.5, 1], [5, 0, -5]);
 
   const stats = [
-    { value: 10, suffix: "+", label: "Years proven quality" },
+    { value: 2, suffix: "+", label: "Years proven quality" },
     { value: 2500, suffix: "+", label: "Charging stations configured" },
     { value: 100, suffix: "%", label: "Repeat customer base" },
   ];
@@ -93,7 +93,7 @@ export const StatsSection = () => {
       >
         <AnimatedSection className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-cream mb-4">
-            Putting installers in charge since 2018
+            Putting installers in charge since 2023
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             We partner with turnkey EV installers all across the country to deliver 
