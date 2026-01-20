@@ -22,7 +22,9 @@ export const LogoStripSection = () => {
         <h3 className="text-center text-cream/60 text-sm font-medium uppercase tracking-wider mb-8">
           Compatible with:
         </h3>
-        <div className="flex flex-wrap justify-center items-center gap-10 md:gap-14 lg:gap-20">
+        
+        {/* Desktop: Static grid */}
+        <div className="hidden md:flex flex-wrap justify-center items-center gap-10 md:gap-14 lg:gap-20">
           {logos.map((logo, index) => (
             <div
               key={index}
@@ -35,6 +37,38 @@ export const LogoStripSection = () => {
               />
             </div>
           ))}
+        </div>
+
+        {/* Mobile: Infinite scrolling carousel */}
+        <div className="md:hidden relative">
+          <div className="flex animate-scroll-left">
+            {/* First set of logos */}
+            {logos.map((logo, index) => (
+              <div
+                key={`first-${index}`}
+                className="flex-shrink-0 px-6 opacity-70 flex items-center justify-center"
+              >
+                <img 
+                  src={logo.src} 
+                  alt={logo.alt} 
+                  className={`${logo.width} h-auto [filter:brightness(0)_invert(1)]`}
+                />
+              </div>
+            ))}
+            {/* Duplicate set for seamless loop */}
+            {logos.map((logo, index) => (
+              <div
+                key={`second-${index}`}
+                className="flex-shrink-0 px-6 opacity-70 flex items-center justify-center"
+              >
+                <img 
+                  src={logo.src} 
+                  alt={logo.alt} 
+                  className={`${logo.width} h-auto [filter:brightness(0)_invert(1)]`}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
