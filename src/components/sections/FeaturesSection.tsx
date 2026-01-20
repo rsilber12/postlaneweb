@@ -32,7 +32,7 @@ export const FeaturesSection = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="relative section-light section-padding overflow-hidden">
+    <section ref={sectionRef} id="features" className="relative section-light section-padding overflow-hidden">
       {/* Green accent strip at top */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent" />
       
