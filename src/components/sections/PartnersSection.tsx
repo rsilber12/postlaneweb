@@ -3,6 +3,7 @@ import newtechLogo from "@/assets/newtech-logo.svg";
 import poweralLogo from "@/assets/poweral-logo.png";
 import resoundEnergyLogo from "@/assets/resound-energy-logo.svg";
 import everchargeLogo from "@/assets/evercharge-logo.webp";
+import whitePartnerLogo from "@/assets/white-logo-partner.png";
 
 export const PartnersSection = () => {
   // Each logo has a custom width to achieve visual balance since images have different aspect ratios
@@ -12,6 +13,7 @@ export const PartnersSection = () => {
     { src: poweralLogo, alt: "Poweral", width: "w-28" },
     { src: resoundEnergyLogo, alt: "Resound Energy", width: "w-28" },
     { src: everchargeLogo, alt: "EverCharge", width: "w-28" },
+    { src: whitePartnerLogo, alt: "Partner", width: "w-28" },
   ];
 
   return (
