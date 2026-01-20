@@ -127,7 +127,7 @@ export const Footer = () => {
             <a href="#" className="hover:text-cream transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-cream transition-colors">Terms of Service</a>
             <a 
-              href="https://linkedin.com" 
+              href="https://www.linkedin.com/company/110753338" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="text-cream/80 hover:text-primary transition-colors"
