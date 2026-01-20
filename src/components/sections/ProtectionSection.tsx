@@ -2,12 +2,13 @@ import { useRef } from "react";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { ArrowRight, Zap } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import bollardProduct from "@/assets/bollard-product.jpeg";
 import productPedestal from "@/assets/product-pedestal.png";
 
 export const ProtectionSection = () => {
   const protectionProducts = [
     {
-      image: productPedestal, // Replace with actual bollards image
+      image: bollardProduct,
       title: "Bollards",
       description: "Protective steel bollards engineered for EV environments.",
       color: "from-primary/20 to-emerald-500/10",
@@ -66,12 +67,12 @@ export const ProtectionSection = () => {
             >
               {/* Card with gradient border effect */}
               <div className="relative h-full flex flex-col rounded-3xl bg-gradient-to-br from-cream/5 to-transparent border border-cream/10 hover:border-primary/30 transition-all duration-500 overflow-hidden">
-                {/* Product Image - Fixed height */}
-                <div className="relative h-64 overflow-hidden bg-gradient-to-br from-cream/5 to-cream/10">
+                {/* Product Image - Fixed height with white background */}
+                <div className="relative h-64 overflow-hidden bg-white">
                   <img 
                     src={product.image} 
                     alt={product.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110"
                   />
                   {/* Gradient overlay */}
                   <div className={`absolute inset-0 bg-gradient-to-t ${product.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
