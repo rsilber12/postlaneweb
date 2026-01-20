@@ -10,7 +10,7 @@ export const ProtectionSection = () => {
     {
       image: bollardProduct,
       title: "Bollards",
-      description: "Protective steel bollards engineered for EV environments.",
+      description: "Protective steel bollards engineered for EV environments. With multiple styles available.",
       color: "from-primary/20 to-emerald-500/10",
     },
     {
