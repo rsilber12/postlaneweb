@@ -6,13 +6,14 @@ import swtchLogo from "@/assets/swtch-logo.svg";
 import wallboxLogo from "@/assets/wallbox-logo.svg";
 
 export const LogoStripSection = () => {
+  // Each logo has a custom width to achieve visual balance since SVGs have different aspect ratios
   const logos = [
-    { src: teslaLogo, alt: "Tesla" },
-    { src: autelLogo, alt: "Autel" },
-    { src: chargepointLogo, alt: "ChargePoint" },
-    { src: zerovaLogo, alt: "Zerova" },
-    { src: swtchLogo, alt: "SWTCH" },
-    { src: wallboxLogo, alt: "Wallbox" },
+    { src: teslaLogo, alt: "Tesla", width: "w-24" },
+    { src: autelLogo, alt: "Autel", width: "w-20" },
+    { src: chargepointLogo, alt: "ChargePoint", width: "w-28" },
+    { src: zerovaLogo, alt: "Zerova", width: "w-20" },
+    { src: swtchLogo, alt: "SWTCH", width: "w-20" },
+    { src: wallboxLogo, alt: "Wallbox", width: "w-24" },
   ];
 
   return (
@@ -25,12 +26,12 @@ export const LogoStripSection = () => {
           {logos.map((logo, index) => (
             <div
               key={index}
-              className="opacity-60 hover:opacity-90 transition-opacity duration-300"
+              className="opacity-70 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
             >
               <img 
                 src={logo.src} 
                 alt={logo.alt} 
-                className="h-8 w-auto brightness-0 invert"
+                className={`${logo.width} h-auto [filter:brightness(0)_invert(1)]`}
               />
             </div>
           ))}
