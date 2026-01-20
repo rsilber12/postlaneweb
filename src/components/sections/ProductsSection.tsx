@@ -33,8 +33,8 @@ export const ProductsSection = () => {
     },
     {
       image: productPedestal,
-      title: "Dual Charger Pedestal",
-      description: "Side-by-side mounting for two charging stations",
+      title: "Add-On Protection",
+      description: "Bollards and wallards engineered for EV environments",
     },
   ];
 
