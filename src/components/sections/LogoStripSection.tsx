@@ -8,12 +8,12 @@ import wallboxLogo from "@/assets/wallbox-logo.svg";
 
 export const LogoStripSection = () => {
   const logos = [
-    { src: teslaLogo, alt: "Tesla" },
-    { src: autelLogo, alt: "Autel" },
-    { src: chargepointLogo, alt: "ChargePoint" },
-    { src: zerovaLogo, alt: "Zerova" },
-    { src: swtchLogo, alt: "SWTCH" },
-    { src: wallboxLogo, alt: "Wallbox" },
+    { src: teslaLogo, alt: "Tesla", size: "h-10 md:h-12" },
+    { src: autelLogo, alt: "Autel", size: "h-6 md:h-7" },
+    { src: chargepointLogo, alt: "ChargePoint", size: "h-8 md:h-10" },
+    { src: zerovaLogo, alt: "Zerova", size: "h-6 md:h-7" },
+    { src: swtchLogo, alt: "SWTCH", size: "h-8 md:h-10" },
+    { src: wallboxLogo, alt: "Wallbox", size: "h-10 md:h-12" },
   ];
 
   return (
@@ -30,12 +30,12 @@ export const LogoStripSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="opacity-50 hover:opacity-80 transition-opacity duration-300 flex items-center justify-center"
+              className="opacity-50 hover:opacity-80 transition-opacity duration-300 flex items-center justify-center h-12"
             >
               <img 
                 src={logo.src} 
                 alt={logo.alt} 
-                className={`w-auto brightness-0 invert ${index === 0 ? 'h-8 md:h-10' : 'h-6 md:h-8'}`}
+                className={`w-auto brightness-0 invert ${logo.size}`}
               />
             </motion.div>
           ))}
