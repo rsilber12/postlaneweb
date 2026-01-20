@@ -2,37 +2,37 @@ import { useRef } from "react";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/ui/AnimatedSection";
 import { DepthCard } from "@/components/ui/Parallax3D";
 import { ArrowRight } from "lucide-react";
-import productComingSoon from "@/assets/product-coming-soon.jpeg";
+import productPedestal from "@/assets/product-pedestal.png";
 
 export const ProductsSection = () => {
   const products = [
     {
-      image: productComingSoon,
+      image: productPedestal,
       title: "Universal 5ft Pedestal",
       description: "Standard mounting pedestal for most EV chargers",
     },
     {
-      image: productComingSoon,
+      image: productPedestal,
       title: "Universal Cable Management Pedestal",
       description: "Built-in spring or counterweight cable retraction system",
     },
     {
-      image: productComingSoon,
+      image: productPedestal,
       title: "4ft Slim Pedestal",
       description: "Compact design for tight parking installations",
     },
     {
-      image: productComingSoon,
+      image: productPedestal,
       title: "Counterweight Slim Pedestal",
       description: "Space-saving design with integrated cable management",
     },
     {
-      image: productComingSoon,
+      image: productPedestal,
       title: "Loop Pedestal",
       description: "Unique loop-style mounting configuration",
     },
     {
-      image: productComingSoon,
+      image: productPedestal,
       title: "Add-On Protection",
       description: "Bollards and wallards engineered for EV environments",
     },
@@ -53,8 +53,8 @@ export const ProductsSection = () => {
         >
           {products.map((product, index) => (
             <DepthCard key={index} index={index}>
-              <StaggerItem className="h-full">
-              <div className="group cursor-pointer h-full p-4 rounded-2xl border-2 border-primary/40 bg-white hover:border-primary hover:bg-white/80 transition-all duration-300 shadow-sm flex flex-col">
+              <StaggerItem>
+              <div className="group cursor-pointer h-full p-4 rounded-2xl border-2 border-primary/40 bg-white hover:border-primary hover:bg-white/80 transition-all duration-300 shadow-sm">
                 {/* Product Image Container - 21:9 aspect ratio with rounded corners */}
                 <div className="relative aspect-[21/9] mb-6 overflow-hidden rounded-xl bg-gradient-to-br from-emerald-100/50 to-emerald-50/30">
                   <img 
@@ -65,7 +65,7 @@ export const ProductsSection = () => {
                 </div>
                 
                 {/* Product Info */}
-                <div className="px-1 flex flex-col flex-1">
+                <div className="px-1">
                   <h3 className="text-xl font-semibold text-dark mb-2 group-hover:text-primary transition-colors duration-300">
                     {product.title}
                   </h3>
