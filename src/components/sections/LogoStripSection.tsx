@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import teslaLogo from "@/assets/tesla-logo.svg";
 import autelLogo from "@/assets/autel-logo.svg";
 import chargepointLogo from "@/assets/chargepoint-logo.svg";
+import zerovaLogo from "@/assets/zerova-logo.svg";
 import logoLight from "@/assets/logo-light.png";
 
 export const LogoStripSection = () => {
@@ -9,7 +10,7 @@ export const LogoStripSection = () => {
     { src: teslaLogo, alt: "Tesla" },
     { src: autelLogo, alt: "Autel" },
     { src: chargepointLogo, alt: "ChargePoint" },
-    { src: logoLight, alt: "Siemens" },
+    { src: zerovaLogo, alt: "Zerova" },
     { src: logoLight, alt: "Schneider" },
   ];
 
