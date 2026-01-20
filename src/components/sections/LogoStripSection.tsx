@@ -3,7 +3,7 @@ import teslaLogo from "@/assets/tesla-logo.svg";
 import autelLogo from "@/assets/autel-logo.svg";
 import chargepointLogo from "@/assets/chargepoint-logo.svg";
 import zerovaLogo from "@/assets/zerova-logo.svg";
-import logoLight from "@/assets/logo-light.png";
+import swtchLogo from "@/assets/swtch-logo.svg";
 
 export const LogoStripSection = () => {
   const logos = [
@@ -11,7 +11,7 @@ export const LogoStripSection = () => {
     { src: autelLogo, alt: "Autel" },
     { src: chargepointLogo, alt: "ChargePoint" },
     { src: zerovaLogo, alt: "Zerova" },
-    { src: logoLight, alt: "Schneider" },
+    { src: swtchLogo, alt: "SWTCH" },
   ];
 
   return (
