@@ -20,7 +20,7 @@ export const PartnersSection = () => {
     <section className="bg-dark py-12 border-t border-border overflow-hidden">
       <div className="container-custom">
         <h3 className="text-center text-cream/60 text-sm font-medium uppercase tracking-wider mb-8">
-          Some of the companies we've worked with:
+          Proud to have partnered with:
         </h3>
         <div className="flex flex-wrap justify-center items-center gap-10 md:gap-14 lg:gap-20">
           {logos.map((logo, index) => (
