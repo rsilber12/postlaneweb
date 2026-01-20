@@ -99,11 +99,11 @@ export const OEMSection = () => {
               </a>
               <span className="text-dark/60 font-medium">or</span>
               <a 
-                href="mailto:OEM@postlane.com"
+                href="mailto:Info@postlaneusa.com"
                 className="group flex items-center gap-3 bg-white/20 backdrop-blur-sm text-dark font-semibold px-8 py-4 rounded-xl border border-white/30 hover:bg-white/30 transition-all duration-300"
               >
                 <Mail className="w-5 h-5" />
-                <span>OEM@postlane.com</span>
+                <span>Info@postlaneusa.com</span>
               </a>
             </div>
           </AnimatedSection>
