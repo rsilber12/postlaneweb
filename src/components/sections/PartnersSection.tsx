@@ -14,7 +14,7 @@ export const PartnersSection = () => {
   // All logos use consistent height, with custom sizing for logos that need it
   const logos = [
     { src: plpEnergyLogo, alt: "PLP Energy", className: "h-8" },
-    { src: newtechLogo, alt: "Newtech", className: "h-12" }, // Larger size for this logo
+    { src: newtechLogo, alt: "Newtech", className: "h-20" }, // Much larger size for this logo
     { src: poweralLogo, alt: "Poweral", className: "h-8" },
     { src: resoundEnergyLogo, alt: "Resound Energy", className: "h-8" },
     { src: everchargeLogo, alt: "EverCharge", className: "h-8" },
