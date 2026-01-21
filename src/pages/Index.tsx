@@ -30,7 +30,6 @@ const Index = () => {
         <ProcessSection />
         <OEMSection />
         <CTASection />
-        <CTASection />
       </main>
       <Footer />
     </div>
