@@ -11,19 +11,19 @@ import partnerLogo4 from "@/assets/partner-logo-4.svg";
 import partnerLogo5 from "@/assets/partner-logo-5.svg";
 
 export const PartnersSection = () => {
-  // All logos use consistent height for uniform appearance
+  // All logos use consistent height, with custom sizing for logos that need it
   const logos = [
-    { src: plpEnergyLogo, alt: "PLP Energy" },
-    { src: newtechLogo, alt: "Newtech" },
-    { src: poweralLogo, alt: "Poweral" },
-    { src: resoundEnergyLogo, alt: "Resound Energy" },
-    { src: everchargeLogo, alt: "EverCharge" },
-    { src: whitePartnerLogo, alt: "Partner" },
-    { src: partnerLogo1, alt: "Partner 1" },
-    { src: partnerLogo2, alt: "Partner 2" },
-    { src: partnerLogo3, alt: "Partner 3" },
-    { src: partnerLogo4, alt: "Partner 4" },
-    { src: partnerLogo5, alt: "Partner 5" },
+    { src: plpEnergyLogo, alt: "PLP Energy", className: "h-8" },
+    { src: newtechLogo, alt: "Newtech", className: "h-12" }, // Larger size for this logo
+    { src: poweralLogo, alt: "Poweral", className: "h-8" },
+    { src: resoundEnergyLogo, alt: "Resound Energy", className: "h-8" },
+    { src: everchargeLogo, alt: "EverCharge", className: "h-8" },
+    { src: whitePartnerLogo, alt: "Partner", className: "h-8" },
+    { src: partnerLogo1, alt: "Partner 1", className: "h-8" },
+    { src: partnerLogo2, alt: "Partner 2", className: "h-8" },
+    { src: partnerLogo3, alt: "Partner 3", className: "h-8" },
+    { src: partnerLogo4, alt: "Partner 4", className: "h-8" },
+    { src: partnerLogo5, alt: "Partner 5", className: "h-8" },
   ];
 
   return (
@@ -45,7 +45,7 @@ export const PartnersSection = () => {
                 <img 
                   src={logo.src} 
                   alt={logo.alt} 
-                  className="h-8 w-auto max-w-[120px] object-contain [filter:brightness(0)_invert(1)]"
+                  className={`${logo.className} w-auto max-w-[140px] object-contain [filter:brightness(0)_invert(1)]`}
                 />
               </div>
             ))}
@@ -58,7 +58,7 @@ export const PartnersSection = () => {
                 <img 
                   src={logo.src} 
                   alt={logo.alt} 
-                  className="h-8 w-auto max-w-[120px] object-contain [filter:brightness(0)_invert(1)]"
+                  className={`${logo.className} w-auto max-w-[140px] object-contain [filter:brightness(0)_invert(1)]`}
                 />
               </div>
             ))}
