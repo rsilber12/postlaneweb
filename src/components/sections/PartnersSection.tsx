@@ -32,37 +32,37 @@ export const PartnersSection = () => {
         <h3 className="text-center text-cream/60 text-sm font-medium uppercase tracking-wider mb-8">
           Proud to have partnered with:
         </h3>
-        
-        {/* Infinite scrolling carousel for both desktop and mobile */}
-        <div className="relative">
-          <div className="flex animate-scroll-left">
-            {/* First set of logos */}
-            {logos.map((logo, index) => (
-              <div
-                key={`first-${index}`}
-                className="flex-shrink-0 px-6 md:px-10 opacity-70 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
-              >
-                <img 
-                  src={logo.src} 
-                  alt={logo.alt} 
-                  className={`${logo.className} w-auto max-w-[140px] object-contain [filter:brightness(0)_invert(1)]`}
-                />
-              </div>
-            ))}
-            {/* Duplicate set for seamless loop */}
-            {logos.map((logo, index) => (
-              <div
-                key={`second-${index}`}
-                className="flex-shrink-0 px-6 md:px-10 opacity-70 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
-              >
-                <img 
-                  src={logo.src} 
-                  alt={logo.alt} 
-                  className={`${logo.className} w-auto max-w-[140px] object-contain [filter:brightness(0)_invert(1)]`}
-                />
-              </div>
-            ))}
-          </div>
+      </div>
+      
+      {/* Infinite scrolling carousel - outside container for full-width seamless loop */}
+      <div className="relative w-full overflow-hidden">
+        <div className="flex w-max animate-scroll-left">
+          {/* First set of logos */}
+          {logos.map((logo, index) => (
+            <div
+              key={`first-${index}`}
+              className="flex-shrink-0 px-6 md:px-10 opacity-70 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
+            >
+              <img 
+                src={logo.src} 
+                alt={logo.alt} 
+                className={`${logo.className} w-auto max-w-[140px] object-contain [filter:brightness(0)_invert(1)]`}
+              />
+            </div>
+          ))}
+          {/* Duplicate set for seamless loop */}
+          {logos.map((logo, index) => (
+            <div
+              key={`second-${index}`}
+              className="flex-shrink-0 px-6 md:px-10 opacity-70 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
+            >
+              <img 
+                src={logo.src} 
+                alt={logo.alt} 
+                className={`${logo.className} w-auto max-w-[140px] object-contain [filter:brightness(0)_invert(1)]`}
+              />
+            </div>
+          ))}
         </div>
       </div>
     </section>
