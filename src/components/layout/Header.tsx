@@ -47,7 +47,7 @@ export const Header = () => {
         <div className="container-custom">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <a href="#hero" className="relative z-10">
+            <a href={isHomePage ? "#hero" : "/#hero"} className="relative z-10">
               <img 
                 src={logoLight} 
                 alt="Postlane" 
