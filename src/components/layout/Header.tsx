@@ -26,12 +26,14 @@ export const Header = () => {
     setIsMobileMenuOpen(false);
   }, [location]);
 
+  const isHomePage = location.pathname === "/";
+  
   const navLinks = [
-    { label: "Products", href: "#products" },
-    { label: "Features", href: "#features" },
-    { label: "Process", href: "#process" },
-    { label: "OEM", href: "#oem" },
-    { label: "Installers", href: "#installers" },
+    { label: "Products", href: isHomePage ? "#products" : "/#products" },
+    { label: "Features", href: isHomePage ? "#features" : "/#features" },
+    { label: "Process", href: isHomePage ? "#process" : "/#process" },
+    { label: "OEM", href: isHomePage ? "#oem" : "/#oem" },
+    { label: "Installers", href: isHomePage ? "#installers" : "/#installers" },
   ];
 
   return (
