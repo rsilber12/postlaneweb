@@ -11,19 +11,19 @@ import partnerLogo4 from "@/assets/partner-logo-4.svg";
 import partnerLogo5 from "@/assets/partner-logo-5.svg";
 
 export const PartnersSection = () => {
-  // Each logo has a custom width to achieve visual balance since images have different aspect ratios
+  // All logos use consistent height for uniform appearance
   const logos = [
-    { src: plpEnergyLogo, alt: "PLP Energy", width: "w-28" },
-    { src: newtechLogo, alt: "Newtech", width: "w-24" },
-    { src: poweralLogo, alt: "Poweral", width: "w-28" },
-    { src: resoundEnergyLogo, alt: "Resound Energy", width: "w-28" },
-    { src: everchargeLogo, alt: "EverCharge", width: "w-28" },
-    { src: whitePartnerLogo, alt: "Partner", width: "w-28" },
-    { src: partnerLogo1, alt: "Partner 1", width: "w-32" },
-    { src: partnerLogo2, alt: "Partner 2", width: "w-28" },
-    { src: partnerLogo3, alt: "Partner 3", width: "w-40" },
-    { src: partnerLogo4, alt: "Partner 4", width: "w-28" },
-    { src: partnerLogo5, alt: "Partner 5", width: "w-24" },
+    { src: plpEnergyLogo, alt: "PLP Energy" },
+    { src: newtechLogo, alt: "Newtech" },
+    { src: poweralLogo, alt: "Poweral" },
+    { src: resoundEnergyLogo, alt: "Resound Energy" },
+    { src: everchargeLogo, alt: "EverCharge" },
+    { src: whitePartnerLogo, alt: "Partner" },
+    { src: partnerLogo1, alt: "Partner 1" },
+    { src: partnerLogo2, alt: "Partner 2" },
+    { src: partnerLogo3, alt: "Partner 3" },
+    { src: partnerLogo4, alt: "Partner 4" },
+    { src: partnerLogo5, alt: "Partner 5" },
   ];
 
   return (
@@ -45,7 +45,7 @@ export const PartnersSection = () => {
                 <img 
                   src={logo.src} 
                   alt={logo.alt} 
-                  className={`${logo.width} h-auto [filter:brightness(0)_invert(1)]`}
+                  className="h-8 w-auto max-w-[120px] object-contain [filter:brightness(0)_invert(1)]"
                 />
               </div>
             ))}
@@ -58,7 +58,7 @@ export const PartnersSection = () => {
                 <img 
                   src={logo.src} 
                   alt={logo.alt} 
-                  className={`${logo.width} h-auto [filter:brightness(0)_invert(1)]`}
+                  className="h-8 w-auto max-w-[120px] object-contain [filter:brightness(0)_invert(1)]"
                 />
               </div>
             ))}
