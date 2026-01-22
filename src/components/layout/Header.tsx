@@ -97,13 +97,24 @@ export const Header = () => {
               </a>
             </div>
 
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden relative z-10 p-2 text-cream"
-            >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
+            {/* Mobile WhatsApp + Menu Button */}
+            <div className="lg:hidden flex items-center gap-2">
+              <a 
+                href="https://api.whatsapp.com/send?phone=17183551808" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-cream hover:text-primary transition-colors p-2"
+                aria-label="WhatsApp"
+              >
+                <FaWhatsapp className="w-5 h-5" />
+              </a>
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="relative z-10 p-2 text-cream"
+              >
+                {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
+            </div>
           </div>
         </div>
       </motion.header>
