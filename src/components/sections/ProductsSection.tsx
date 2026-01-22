@@ -98,7 +98,9 @@ export const ProductsSection = () => {
           {/* Download Brochure Button */}
           <AnimatedSection className="text-center mt-12">
             <a 
-              href="#" 
+              href="https://drive.google.com/file/d/12cFWpWefua4dlY1_BqLcHNxRdg6eb0ip/view?usp=sharing" 
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-dark text-cream font-semibold px-8 py-4 rounded-xl hover:bg-dark/90 transition-all duration-300 hover:shadow-xl"
             >
               <ArrowRight className="w-5 h-5" />
