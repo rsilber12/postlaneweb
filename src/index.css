@@ -387,8 +387,6 @@
   animation: scroll-left 30s linear infinite;
 }
 
-@media (max-width: 768px) {
-  .animate-scroll-left {
-    animation: scroll-left 15s linear infinite;
-  }
+.animate-scroll-left-fast {
+  animation: scroll-left 15s linear infinite;
 }

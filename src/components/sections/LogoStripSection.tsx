@@ -41,7 +41,7 @@ export const LogoStripSection = () => {
 
         {/* Mobile: Infinite scrolling carousel */}
         <div className="md:hidden relative">
-          <div className="flex animate-scroll-left">
+          <div className="flex animate-scroll-left-fast">
             {/* First set of logos */}
             {logos.map((logo, index) => (
               <div
