@@ -113,7 +113,12 @@ export const Footer = () => {
               <Link to="/contact" className="btn-primary text-sm text-center">
                 Request a Quote
               </Link>
-              <a href="#" className="btn-secondary text-sm text-center">
+              <a 
+                href="https://drive.google.com/file/d/12cFWpWefua4dlY1_BqLcHNxRdg6eb0ip/view?usp=sharing" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary text-sm text-center"
+              >
                 Download Catalog
               </a>
             </div>

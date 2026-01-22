@@ -89,7 +89,9 @@ export const Header = () => {
                 Get a Quote
               </Link>
               <a 
-                href="#" 
+                href="https://drive.google.com/file/d/12cFWpWefua4dlY1_BqLcHNxRdg6eb0ip/view?usp=sharing" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn-secondary text-sm flex items-center gap-2"
               >
                 <Download className="w-4 h-4" />
@@ -162,7 +164,12 @@ export const Header = () => {
                 <Link to="/contact" className="btn-primary text-center">
                   Get a Quote
                 </Link>
-                <a href="#" className="btn-secondary text-center flex items-center justify-center gap-2">
+                <a 
+                  href="https://drive.google.com/file/d/12cFWpWefua4dlY1_BqLcHNxRdg6eb0ip/view?usp=sharing" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-secondary text-center flex items-center justify-center gap-2"
+                >
                   <Download className="w-4 h-4" />
                   Download Catalog
                 </a>
