@@ -35,7 +35,7 @@ export const ProductsSection = () => {
       description: "Space-saving design with integrated cable management",
     },
     {
-      image: productComingSoon,
+      image: loopPedestal,
       title: "Loop Pedestal",
       description: "Unique loop-style mounting configuration",
     },
