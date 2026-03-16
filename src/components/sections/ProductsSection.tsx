@@ -6,6 +6,7 @@ import { Dialog, DialogContent, DialogClose } from "@/components/ui/dialog";
 import universal5ftPedestal from "@/assets/universal-5ft-pedestal.jpeg";
 import slim4ftPedestal from "@/assets/4ft-slim-pedestal.jpeg";
 import productComingSoon from "@/assets/product-coming-soon.jpeg";
+import loopPedestal from "@/assets/loop-pedestal.jpeg";
 import universalCableManagement from "@/assets/universal-cable-management-pedestal.jpeg";
 
 export const ProductsSection = () => {
