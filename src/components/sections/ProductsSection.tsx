@@ -31,7 +31,7 @@ export const ProductsSection = () => {
       description: "Compact design for tight parking installations",
     },
     {
-      image: productComingSoon,
+      image: counterweightPedestal,
       title: "Counterweight Slim Pedestal",
       description: "Space-saving design with integrated cable management",
     },
