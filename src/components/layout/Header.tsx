@@ -89,7 +89,7 @@ export const Header = () => {
                 Get a Quote
               </Link>
               <a 
-                href="https://drive.google.com/file/d/12cFWpWefua4dlY1_BqLcHNxRdg6eb0ip/view?usp=sharing" 
+                href="https://drive.google.com/file/d/1JX6NIVE3R52eu5ZVx70Vi72yctzSZ92o/view?usp=sharing" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-secondary text-sm flex items-center gap-2"
@@ -165,7 +165,7 @@ export const Header = () => {
                   Get a Quote
                 </Link>
                 <a 
-                  href="https://drive.google.com/file/d/12cFWpWefua4dlY1_BqLcHNxRdg6eb0ip/view?usp=sharing" 
+                  href="https://drive.google.com/file/d/1JX6NIVE3R52eu5ZVx70Vi72yctzSZ92o/view?usp=sharing" 
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-secondary text-center flex items-center justify-center gap-2"
