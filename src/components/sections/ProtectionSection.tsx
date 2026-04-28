@@ -106,7 +106,7 @@ export const ProtectionSection = () => {
           {/* Download button with glow effect */}
           <AnimatedSection delay={0.4} className="text-center">
             <a 
-              href="https://drive.google.com/file/d/12cFWpWefua4dlY1_BqLcHNxRdg6eb0ip/view?usp=sharing" 
+              href="https://drive.google.com/file/d/1JX6NIVE3R52eu5ZVx70Vi72yctzSZ92o/view?usp=sharing" 
               target="_blank"
               rel="noopener noreferrer"
               className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-cream/5 border border-cream/20 text-cream font-semibold hover:border-primary/40 hover:bg-primary/5 transition-all duration-300"

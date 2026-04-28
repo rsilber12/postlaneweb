@@ -102,7 +102,7 @@ export const ProductsSection = () => {
         {/* Download Brochure */}
         <AnimatedSection className="text-center mt-12">
           <a
-            href="https://drive.google.com/file/d/12cFWpWefua4dlY1_BqLcHNxRdg6eb0ip/view?usp=sharing"
+            href="https://drive.google.com/file/d/1JX6NIVE3R52eu5ZVx70Vi72yctzSZ92o/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-dark text-cream font-semibold px-8 py-4 rounded-xl hover:bg-dark/90 transition-all duration-300 hover:shadow-xl"
