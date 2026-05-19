@@ -88,7 +88,11 @@ const Contact = () => {
       submitData.append("message", formData.message.trim());
       submitData.append("_subject", `New Quote Request from ${formData.company.trim()}`);
       submitData.append("_template", "table");
-      
+      submitData.append("_captcha", "false");
+      if (uploadedFile) {
+        submitData.append("logo", uploadedFile);
+      }
+
       // Send to Formsubmit.co
       const response = await fetch("https://formsubmit.co/ajax/Info@postlaneusa.com", {
         method: "POST",
