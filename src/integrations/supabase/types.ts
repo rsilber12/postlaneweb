@@ -83,6 +83,48 @@ export type Database = {
         }
         Relationships: []
       }
+      quote_requests: {
+        Row: {
+          company: string
+          created_at: string
+          email: string
+          id: string
+          logo_file_name: string | null
+          message: string
+          phone: string
+          product_interests: string[]
+          project_type: string
+          quantity: string
+          updated_at: string
+        }
+        Insert: {
+          company: string
+          created_at?: string
+          email: string
+          id?: string
+          logo_file_name?: string | null
+          message?: string
+          phone: string
+          product_interests?: string[]
+          project_type: string
+          quantity: string
+          updated_at?: string
+        }
+        Update: {
+          company?: string
+          created_at?: string
+          email?: string
+          id?: string
+          logo_file_name?: string | null
+          message?: string
+          phone?: string
+          product_interests?: string[]
+          project_type?: string
+          quantity?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string
