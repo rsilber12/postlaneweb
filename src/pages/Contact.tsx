@@ -5,9 +5,11 @@ import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { Phone, Mail, Clock, Upload, X, Check, Loader2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useToast } from "@/hooks/use-toast";
+import { useSearchParams } from "react-router-dom";
 
 const Contact = () => {
   const { toast } = useToast();
+  const [searchParams] = useSearchParams();
   const [formData, setFormData] = useState({
     company: "",
     email: "",
@@ -19,7 +21,10 @@ const Contact = () => {
   const [productInterests, setProductInterests] = useState<string[]>([]);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const isSubmitted = searchParams.get("submitted") === "true";
+  const successRedirectUrl = typeof window !== "undefined"
+    ? `${window.location.origin}/contact?submitted=true`
+    : "/contact?submitted=true";
 
   const projectTypes = [
     "Commercial Installation",
@@ -52,7 +57,7 @@ const Contact = () => {
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
     // Validate required fields
@@ -75,47 +80,7 @@ const Contact = () => {
     }
 
     setIsSubmitting(true);
-
-    try {
-      // Prepare form data for Formsubmit.co
-      const submitData = new FormData();
-      submitData.append("company", formData.company.trim());
-      submitData.append("email", formData.email.trim());
-      submitData.append("phone", formData.phone.trim());
-      submitData.append("projectType", formData.projectType);
-      submitData.append("productInterests", productInterests.join(", "));
-      submitData.append("quantity", formData.quantity.trim());
-      submitData.append("message", formData.message.trim());
-      submitData.append("_subject", `New Quote Request from ${formData.company.trim()}`);
-      submitData.append("_template", "table");
-      submitData.append("_captcha", "false");
-      if (uploadedFile) {
-        submitData.append("logo", uploadedFile);
-      }
-
-      // Send to Formsubmit.co
-      const response = await fetch("https://formsubmit.co/ajax/Info@postlaneusa.com", {
-        method: "POST",
-        body: submitData,
-      });
-
-      const result = await response.json();
-
-      if (result.success === "true" || result.success === true) {
-        setIsSubmitted(true);
-      } else {
-        throw new Error("Form submission failed");
-      }
-    } catch (error) {
-      console.error("Form submission error:", error);
-      toast({
-        title: "Submission Failed",
-        description: "There was an error submitting your request. Please try again or contact us directly.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
+    e.currentTarget.submit();
   };
 
   if (isSubmitted) {
@@ -166,7 +131,18 @@ const Contact = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
             {/* Form */}
             <AnimatedSection delay={0.2} className="lg:col-span-2">
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form
+                onSubmit={handleSubmit}
+                action="https://formsubmit.co/Info@postlaneusa.com"
+                method="POST"
+                encType="multipart/form-data"
+                className="space-y-6"
+              >
+                <input type="hidden" name="_subject" value={`New Quote Request from ${formData.company.trim() || "Postlane Website"}`} />
+                <input type="hidden" name="_template" value="table" />
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_next" value={successRedirectUrl} />
+                <input type="hidden" name="productInterests" value={productInterests.join(", ")} />
                 {/* Company */}
                 <div>
                   <label className="form-label">
@@ -174,6 +150,7 @@ const Contact = () => {
                   </label>
                   <input
                     type="text"
+                    name="company"
                     required
                     value={formData.company}
                     onChange={(e) => setFormData({ ...formData, company: e.target.value })}
@@ -190,6 +167,7 @@ const Contact = () => {
                     </label>
                     <input
                       type="email"
+                      name="email"
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -203,6 +181,7 @@ const Contact = () => {
                     </label>
                     <input
                       type="tel"
+                      name="phone"
                       required
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -218,6 +197,7 @@ const Contact = () => {
                     Project Type <span className="text-primary">*</span>
                   </label>
                   <select
+                    name="projectType"
                     required
                     value={formData.projectType}
                     onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
@@ -260,6 +240,7 @@ const Contact = () => {
                   </label>
                   <input
                     type="text"
+                    name="quantity"
                     required
                     value={formData.quantity}
                     onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
@@ -283,6 +264,7 @@ const Contact = () => {
                         <span className="text-light-muted">Click to upload or drag and drop</span>
                         <input
                           type="file"
+                          name="attachment"
                           className="hidden"
                           accept=".ai,.eps,.svg,.png"
                           onChange={handleFileChange}
@@ -307,6 +289,7 @@ const Contact = () => {
                 <div>
                   <label className="form-label">Message</label>
                   <textarea
+                    name="message"
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     className="form-input min-h-[120px] resize-none"
