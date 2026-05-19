@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { Phone, Mail, Clock, Upload, X, Check, Loader2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useToast } from "@/hooks/use-toast";
+import { useSearchParams } from "react-router-dom";
 
 const PROJECT_TYPES = [
   "Commercial Installation",
@@ -16,10 +17,12 @@ const PROJECT_TYPES = [
 
 const PRODUCT_OPTIONS = ["Bollards", "Pedestals", "Wallards", "Signage", "Bundles"];
 
-const FORMSUBMIT_ENDPOINT = "https://formsubmit.co/ajax/Info@postlaneusa.com";
+const FORMSUBMIT_ENDPOINT = "https://formsubmit.co/Info@postlaneusa.com";
 
 const Contact = () => {
   const { toast } = useToast();
+  const [searchParams] = useSearchParams();
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const [formData, setFormData] = useState({
     company: "",
     email: "",
@@ -31,7 +34,11 @@ const Contact = () => {
   const [productInterests, setProductInterests] = useState<string[]>([]);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const isSubmitted = searchParams.get("submitted") === "1";
+  const successUrl =
+    typeof window !== "undefined"
+      ? `${window.location.origin}/contact?submitted=1`
+      : "https://postlaneweb.lovable.app/contact?submitted=1";
 
   const toggleProduct = (product: string) => {
     setProductInterests((prev) =>
@@ -41,22 +48,19 @@ const Contact = () => {
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (file) setUploadedFile(file);
+    setUploadedFile(file ?? null);
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    if (!formData.company || !formData.email || !formData.phone || !formData.projectType || !formData.quantity) {
-      toast({
-        title: "Missing Required Fields",
-        description: "Please fill in all required fields.",
-        variant: "destructive",
-      });
-      return;
+  const clearFile = () => {
+    setUploadedFile(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
     }
+  };
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     if (productInterests.length === 0) {
+      e.preventDefault();
       toast({
         title: "Product Interest Required",
         description: "Please select at least one product interest.",
@@ -66,48 +70,6 @@ const Contact = () => {
     }
 
     setIsSubmitting(true);
-
-    try {
-      const payload = new FormData();
-      payload.append("Company", formData.company);
-      payload.append("Email", formData.email);
-      payload.append("Phone", formData.phone);
-      payload.append("Project Type", formData.projectType);
-      payload.append("Product Interests", productInterests.join(", "));
-      payload.append("Quantity", formData.quantity);
-      payload.append("Message", formData.message || "—");
-      payload.append("_subject", `New Quote Request from ${formData.company}`);
-      payload.append("_template", "table");
-      payload.append("_captcha", "false");
-      if (uploadedFile) payload.append("attachment", uploadedFile, uploadedFile.name);
-
-      const response = await fetch(FORMSUBMIT_ENDPOINT, {
-        method: "POST",
-        headers: { Accept: "application/json" },
-        body: payload,
-      });
-
-      if (!response.ok) throw new Error(`Request failed: ${response.status}`);
-
-      const result = await response.json().catch(() => ({}));
-      if (result.success === "false" || result.success === false) {
-        throw new Error(result.message || "Submission failed");
-      }
-
-      setIsSubmitted(true);
-      setFormData({ company: "", email: "", phone: "", projectType: "", quantity: "", message: "" });
-      setProductInterests([]);
-      setUploadedFile(null);
-    } catch (err) {
-      console.error("Contact form submission error:", err);
-      toast({
-        title: "Submission Failed",
-        description: "Something went wrong. Please try again or email us directly at Info@postlaneusa.com.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
   };
 
   if (isSubmitted) {
@@ -151,13 +113,26 @@ const Contact = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
             <AnimatedSection delay={0.2} className="lg:col-span-2">
-              <form onSubmit={handleSubmit} className="space-y-6" noValidate>
+              <form
+                action={FORMSUBMIT_ENDPOINT}
+                method="POST"
+                encType="multipart/form-data"
+                onSubmit={handleSubmit}
+                className="space-y-6"
+              >
+                <input type="hidden" name="_subject" value={`New Quote Request from ${formData.company || "Website Contact Form"}`} />
+                <input type="hidden" name="_template" value="table" />
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_next" value={successUrl} />
+                <input type="hidden" name="_replyto" value={formData.email} />
+                <input type="hidden" name="Product Interests" value={productInterests.join(", ")} />
                 <div>
                   <label className="form-label">
                     Company <span className="text-primary">*</span>
                   </label>
                   <input
                     type="text"
+                    name="Company"
                     required
                     value={formData.company}
                     onChange={(e) => setFormData({ ...formData, company: e.target.value })}
@@ -173,6 +148,7 @@ const Contact = () => {
                     </label>
                     <input
                       type="email"
+                      name="Email"
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -186,6 +162,7 @@ const Contact = () => {
                     </label>
                     <input
                       type="tel"
+                      name="Phone"
                       required
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -200,6 +177,7 @@ const Contact = () => {
                     Project Type <span className="text-primary">*</span>
                   </label>
                   <select
+                    name="Project Type"
                     required
                     value={formData.projectType}
                     onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
@@ -237,6 +215,7 @@ const Contact = () => {
                   </label>
                   <input
                     type="text"
+                    name="Quantity"
                     required
                     value={formData.quantity}
                     onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
@@ -250,23 +229,29 @@ const Contact = () => {
                   <p className="text-sm text-light-muted mb-3">
                     Upload vector (.ai/.eps/.svg) or high-res PNG. We'll confirm artwork within 1-2 business days.
                   </p>
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    name="attachment"
+                    className="hidden"
+                    accept=".ai,.eps,.svg,.png"
+                    onChange={handleFileChange}
+                  />
                   {!uploadedFile ? (
-                    <label className="flex flex-col items-center justify-center w-full h-40 border-2 border-dashed border-light-border rounded-lg cursor-pointer hover:border-primary transition-colors bg-light-card">
+                    <button
+                      type="button"
+                      onClick={() => fileInputRef.current?.click()}
+                      className="flex flex-col items-center justify-center w-full h-40 border-2 border-dashed border-light-border rounded-lg cursor-pointer hover:border-primary transition-colors bg-light-card"
+                    >
                       <Upload className="w-8 h-8 text-light-muted mb-2" />
                       <span className="text-light-muted">Click to upload or drag and drop</span>
-                      <input
-                        type="file"
-                        className="hidden"
-                        accept=".ai,.eps,.svg,.png"
-                        onChange={handleFileChange}
-                      />
-                    </label>
+                    </button>
                   ) : (
                     <div className="flex items-center justify-between p-4 bg-light-card border border-light-border rounded-lg">
                       <span className="text-light-foreground">{uploadedFile.name}</span>
                       <button
                         type="button"
-                        onClick={() => setUploadedFile(null)}
+                        onClick={clearFile}
                         className="p-1 hover:bg-light-border rounded transition-colors"
                       >
                         <X className="w-5 h-5 text-light-muted" />
@@ -278,6 +263,7 @@ const Contact = () => {
                 <div>
                   <label className="form-label">Message</label>
                   <textarea
+                    name="Message"
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     className="form-input min-h-[120px] resize-none"
