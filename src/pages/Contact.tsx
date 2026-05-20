@@ -5,7 +5,9 @@ import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { Phone, Mail, Clock, Upload, X, Check, Loader2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useToast } from "@/hooks/use-toast";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
+
 
 const PROJECT_TYPES = [
   "Commercial Installation",
