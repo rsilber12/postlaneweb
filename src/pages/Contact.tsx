@@ -47,8 +47,20 @@ const Contact = () => {
     );
   };
 
+  const MAX_FILE_SIZE = 800 * 1024; // 800KB - Web3Forms free tier limit
+
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
+    if (file && file.size > MAX_FILE_SIZE) {
+      toast({
+        title: "File Too Large",
+        description: "Logo must be under 800KB. Please compress it or email it separately to Info@postlaneusa.com.",
+        variant: "destructive",
+      });
+      if (fileInputRef.current) fileInputRef.current.value = "";
+      setUploadedFile(null);
+      return;
+    }
     setUploadedFile(file ?? null);
   };
 
@@ -72,6 +84,7 @@ const Contact = () => {
 
     setIsSubmitting(true);
   };
+
 
   if (isSubmitted) {
     return (
@@ -228,7 +241,7 @@ const Contact = () => {
                 <div>
                   <label className="form-label">Upload Logo (Optional)</label>
                   <p className="text-sm text-light-muted mb-3">
-                    Upload vector (.ai/.eps/.svg) or high-res PNG. We'll confirm artwork within 1-2 business days.
+                    Upload vector (.ai/.eps/.svg) or high-res PNG, max 800KB. For larger files, email Info@postlaneusa.com. We'll confirm artwork within 1-2 business days.
                   </p>
                   <input
                     ref={fileInputRef}
