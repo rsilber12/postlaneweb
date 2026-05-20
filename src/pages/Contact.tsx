@@ -17,7 +17,8 @@ const PROJECT_TYPES = [
 
 const PRODUCT_OPTIONS = ["Bollards", "Pedestals", "Wallards", "Signage", "Bundles"];
 
-const FORMSUBMIT_ENDPOINT = "https://formsubmit.co/Info@postlaneusa.com";
+const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
+const WEB3FORMS_ACCESS_KEY = "db03bda5-7251-4bdf-95eb-b752d08720f5";
 
 const Contact = () => {
   const { toast } = useToast();
