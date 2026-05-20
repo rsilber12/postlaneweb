@@ -195,19 +195,8 @@ const Contact = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
             <AnimatedSection delay={0.2} className="lg:col-span-2">
-              <form
-                action={WEB3FORMS_ENDPOINT}
-                method="POST"
-                encType="multipart/form-data"
-                onSubmit={handleSubmit}
-                className="space-y-6"
-              >
-                <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
-                <input type="hidden" name="subject" value={`New Quote Request from ${formData.company || "Website Contact Form"}`} />
-                <input type="hidden" name="from_name" value="Postlane Website" />
-                <input type="hidden" name="redirect" value={successUrl} />
-                <input type="hidden" name="replyto" value={formData.email} />
-                <input type="hidden" name="Product Interests" value={productInterests.join(", ")} />
+              <form onSubmit={handleSubmit} className="space-y-6">
+
                 <div>
                   <label className="form-label">
                     Company <span className="text-primary">*</span>
