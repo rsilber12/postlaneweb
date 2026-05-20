@@ -18,7 +18,7 @@ const PROJECT_TYPES = [
 const PRODUCT_OPTIONS = ["Bollards", "Pedestals", "Wallards", "Signage", "Bundles"];
 
 const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
-const WEB3FORMS_ACCESS_KEY = "db03bda5-7251-4bdf-95eb-b752d08720f5";
+const WEB3FORMS_ACCESS_KEY = "bbea414f-7a01-4979-9e58-4d9bb0ecec13";
 
 const Contact = () => {
   const { toast } = useToast();
