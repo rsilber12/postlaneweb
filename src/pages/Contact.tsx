@@ -298,7 +298,7 @@ const Contact = () => {
                 <div>
                   <label className="form-label">Upload Logo (Optional)</label>
                   <p className="text-sm text-light-muted mb-3">
-                    Upload vector (.ai/.eps/.svg) or high-res PNG, max 800KB. For larger files, email Info@postlaneusa.com. We'll confirm artwork within 1-2 business days.
+                    Upload vector (.ai/.eps/.svg) or high-res PNG, up to 25MB. We'll confirm artwork within 1-2 business days.
                   </p>
                   <input
                     ref={fileInputRef}
