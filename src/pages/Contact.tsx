@@ -5,7 +5,9 @@ import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { Phone, Mail, Clock, Upload, X, Check, Loader2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useToast } from "@/hooks/use-toast";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
+
 
 const PROJECT_TYPES = [
   "Commercial Installation",
@@ -22,6 +24,7 @@ const WEB3FORMS_ACCESS_KEY = "bbea414f-7a01-4979-9e58-4d9bb0ecec13";
 
 const Contact = () => {
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [formData, setFormData] = useState({
@@ -36,10 +39,8 @@ const Contact = () => {
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const isSubmitted = searchParams.get("submitted") === "1";
-  const successUrl =
-    typeof window !== "undefined"
-      ? `${window.location.origin}/contact?submitted=1`
-      : "https://postlaneweb.lovable.app/contact?submitted=1";
+
+  const MAX_FILE_SIZE = 25 * 1024 * 1024; // 25MB
 
   const toggleProduct = (product: string) => {
     setProductInterests((prev) =>
@@ -47,14 +48,12 @@ const Contact = () => {
     );
   };
 
-  const MAX_FILE_SIZE = 800 * 1024; // 800KB - Web3Forms free tier limit
-
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file && file.size > MAX_FILE_SIZE) {
       toast({
         title: "File Too Large",
-        description: "Logo must be under 800KB. Please compress it or email it separately to Info@postlaneusa.com.",
+        description: "Logo must be under 25MB.",
         variant: "destructive",
       });
       if (fileInputRef.current) fileInputRef.current.value = "";
@@ -71,9 +70,10 @@ const Contact = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
     if (productInterests.length === 0) {
-      e.preventDefault();
       toast({
         title: "Product Interest Required",
         description: "Please select at least one product interest.",
@@ -83,7 +83,75 @@ const Contact = () => {
     }
 
     setIsSubmitting(true);
+
+    try {
+      // 1. Upload file to storage if present
+      let logoUrl: string | null = null;
+      let logoFileName: string | null = null;
+
+      if (uploadedFile) {
+        const ext = uploadedFile.name.split(".").pop() ?? "bin";
+        const safeName = uploadedFile.name.replace(/[^a-zA-Z0-9._-]/g, "_");
+        const path = `${Date.now()}-${crypto.randomUUID()}-${safeName}`;
+        const { error: uploadError } = await supabase.storage
+          .from("quote-attachments")
+          .upload(path, uploadedFile, {
+            contentType: uploadedFile.type || `application/${ext}`,
+            upsert: false,
+          });
+        if (uploadError) throw uploadError;
+        const { data: publicData } = supabase.storage
+          .from("quote-attachments")
+          .getPublicUrl(path);
+        logoUrl = publicData.publicUrl;
+        logoFileName = uploadedFile.name;
+      }
+
+      // 2. Submit form details + logo link to Web3Forms via JSON
+      const payload: Record<string, string> = {
+        access_key: WEB3FORMS_ACCESS_KEY,
+        subject: `New Quote Request from ${formData.company || "Website Contact Form"}`,
+        from_name: "Postlane Website",
+        replyto: formData.email,
+        Company: formData.company,
+        Email: formData.email,
+        Phone: formData.phone,
+        "Project Type": formData.projectType,
+        "Product Interests": productInterests.join(", "),
+        Quantity: formData.quantity,
+        Message: formData.message,
+      };
+      if (logoUrl) {
+        payload["Logo File"] = logoFileName ?? "";
+        payload["Logo Download Link"] = logoUrl;
+      }
+
+      const res = await fetch(WEB3FORMS_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+      const json = await res.json();
+      if (!res.ok || !json.success) {
+        throw new Error(json.message || "Failed to submit form");
+      }
+
+      navigate("/contact?submitted=1");
+    } catch (err) {
+      console.error("Form submission error:", err);
+      toast({
+        title: "Submission Failed",
+        description: err instanceof Error ? err.message : "Please try again or email Info@postlaneusa.com.",
+        variant: "destructive",
+      });
+      setIsSubmitting(false);
+    }
   };
+
+
 
 
   if (isSubmitted) {
@@ -127,19 +195,8 @@ const Contact = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
             <AnimatedSection delay={0.2} className="lg:col-span-2">
-              <form
-                action={WEB3FORMS_ENDPOINT}
-                method="POST"
-                encType="multipart/form-data"
-                onSubmit={handleSubmit}
-                className="space-y-6"
-              >
-                <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
-                <input type="hidden" name="subject" value={`New Quote Request from ${formData.company || "Website Contact Form"}`} />
-                <input type="hidden" name="from_name" value="Postlane Website" />
-                <input type="hidden" name="redirect" value={successUrl} />
-                <input type="hidden" name="replyto" value={formData.email} />
-                <input type="hidden" name="Product Interests" value={productInterests.join(", ")} />
+              <form onSubmit={handleSubmit} className="space-y-6">
+
                 <div>
                   <label className="form-label">
                     Company <span className="text-primary">*</span>
@@ -241,7 +298,7 @@ const Contact = () => {
                 <div>
                   <label className="form-label">Upload Logo (Optional)</label>
                   <p className="text-sm text-light-muted mb-3">
-                    Upload vector (.ai/.eps/.svg) or high-res PNG, max 800KB. For larger files, email Info@postlaneusa.com. We'll confirm artwork within 1-2 business days.
+                    Upload vector (.ai/.eps/.svg) or high-res PNG, up to 25MB. We'll confirm artwork within 1-2 business days.
                   </p>
                   <input
                     ref={fileInputRef}
