@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import { OLD_SPRING_SLUG, SPRING_SLUG } from "@/lib/seo";
 
 export type Product = {
   id: string;
@@ -48,7 +49,11 @@ export function useProduct(slug: string | undefined) {
     if (!slug) return;
     (async () => {
       setLoading(true);
-      const { data } = await supabase.from("products").select("*").eq("slug", slug).maybeSingle();
+      let { data } = await supabase.from("products").select("*").eq("slug", slug).eq("published", true).maybeSingle();
+      if (!data && slug === SPRING_SLUG) {
+        const result = await supabase.from("products").select("*").eq("slug", OLD_SPRING_SLUG).eq("published", true).maybeSingle();
+        data = result.data;
+      }
       if (data) {
         setProduct({
           ...(data as any),
