@@ -25,7 +25,7 @@ export const pageMetadata: Record<string, { title: string; description: string }
   },
   "/products/universal-cable-management-pedestal": {
     title: "EV Charger Pedestal with Cable Management | Postlane USA",
-    description: "Discover a USA-made EV charger pedestal with integrated cable management and universal mounting. Explore mounting options for clean EV installations.",
+    description: "Discover a USA-made EV charger pedestal with integrated cable management and universal mounting. Explore mounting options for clean new installations.",
   },
   "/products/4ft-slim-pedestal": {
     title: "4 ft Slim EV Pedestal for Tesla and Autel Chargers | Postlane USA",
@@ -33,11 +33,11 @@ export const pageMetadata: Record<string, { title: string; description: string }
   },
   "/products/counterweight-slim-pedestal": {
     title: "Slim Cable Management EV Pedestal | Postlane USA",
-    description: "Meet the PL-PREMIUM slim EV pedestal with integrated cable management, concealed wiring and a powder-coated finish. USA-made and shipped fully assembled.",
+    description: "Meet the PL-PREMIUM slim EV pedestal with integrated cable management, concealed wiring and a powder-coated finish. USA-made and sent fully assembled.",
   },
   [`/products/${SPRING_SLUG}`]: {
     title: "Wall Mount EV Cable Management, Spring Retractable | Postlane USA",
-    description: "Keep EV charging cables off the ground with Postlane USA's spring retractable wall mount. Has 13 ft of reach with adapters for EV cables rated up to 48A.",
+    description: "Keep EV charging cables off the ground with Postlane USA's spring retractable wall mount. Has 13 ft of reach with adapters for EV cables rated to 48A.",
   },
   "/products/pedestal": {
     title: "EV Charger Pedestal Preview | Postlane USA",

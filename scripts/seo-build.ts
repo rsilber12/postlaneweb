@@ -1,5 +1,5 @@
 /// <reference lib="dom" />
-import { mkdir, writeFile } from "node:fs/promises";
+import { access, mkdir, readdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { loadEnv, preview, type Plugin } from "vite";
 import puppeteer, { type Browser } from "puppeteer-core";
@@ -10,8 +10,19 @@ const MAX_PRERENDER_PAGES = 200;
 type PublishedProduct = { slug: string };
 
 export async function launchRenderer() {
+  // Prefer the platform's bundled browser, which includes its runtime libraries.
+  const browserRoot = process.env.PLAYWRIGHT_BROWSERS_PATH || "/opt/ms-playwright";
+  const versions = await readdir(browserRoot).catch(() => []);
+  let executablePath: string | undefined;
+  for (const version of versions.filter((entry) => /^chromium-\d+$/.test(entry)).sort().reverse()) {
+    for (const folder of ["chrome-linux", "chrome-linux64"]) {
+      const candidate = path.join(browserRoot, version, folder, "chrome");
+      if (await access(candidate).then(() => true).catch(() => false)) { executablePath = candidate; break; }
+    }
+    if (executablePath) break;
+  }
   return puppeteer.launch({
-    executablePath: await chromium.executablePath(),
+    executablePath: executablePath || await chromium.executablePath(),
     args: chromium.args,
     headless: true,
   });
