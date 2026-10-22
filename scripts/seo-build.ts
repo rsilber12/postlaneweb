@@ -1,3 +1,4 @@
+/// <reference lib="dom" />
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { loadEnv, preview, type Plugin } from "vite";

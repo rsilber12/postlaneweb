@@ -13,35 +13,35 @@ export function canonicalUrl(path: string) {
 export const pageMetadata: Record<string, { title: string; description: string }> = {
   "/": {
     title: "EV Charger Pedestals Made in USA | Postlane USA",
-    description: "Explore USA-made EV charger pedestals, cable management and protective bollards from Postlane USA. Request a quote for your next charging installation.",
+    description: "Explore USA-made EV charger pedestals, cable management and protective bollards from Postlane USA. Request a quote for your new charging installation.",
   },
   "/contact": {
     title: "Contact Postlane USA | EV Charger Pedestals",
-    description: "Contact Postlane USA for EV charger pedestals, cable management and custom mounting solutions. Tell us about your project and request a tailored quote.",
+    description: "Contact Postlane USA for EV charger pedestals, cable management and custom mounting solutions. Tell us about your project and request a project quote.",
   },
   "/products/universal-5ft-pedestal": {
     title: "Universal 5 ft EV Charger Pedestal | Postlane USA",
-    description: "Explore the PL-CLASSIC universal EV charger pedestal: steel or aluminum, multiple heights and custom branding. Built in the USA for durable installations.",
+    description: "Explore the PL-CLASSIC universal EV charger pedestal: steel or aluminum, multiple heights and custom branding. Built in the USA for new installations.",
   },
   "/products/universal-cable-management-pedestal": {
     title: "EV Charger Pedestal with Cable Management | Postlane USA",
-    description: "Discover a USA-made EV charger pedestal with integrated cable management and universal mounting. Explore bracket options for clean charging installations.",
+    description: "Discover a USA-made EV charger pedestal with integrated cable management and universal mounting. Explore mounting options for clean EV installations.",
   },
   "/products/4ft-slim-pedestal": {
     title: "4 ft Slim EV Pedestal for Tesla and Autel Chargers | Postlane USA",
-    description: "Explore Postlane USA's compact 4 ft slim EV charger pedestal for tight parking installations. A space-saving mounting solution with durable construction.",
+    description: "Explore Postlane USA's compact 4 ft slim EV charger pedestal for tight parking installations. A space-saving mounting solution with firm construction.",
   },
   "/products/counterweight-slim-pedestal": {
     title: "Slim Cable Management EV Pedestal | Postlane USA",
-    description: "Meet the PL-PREMIUM slim EV pedestal with integrated cable management, concealed wiring and a powder-coated finish. Made in the USA and fully assembled.",
+    description: "Meet the PL-PREMIUM slim EV pedestal with integrated cable management, concealed wiring and a powder-coated finish. USA-made and shipped fully assembled.",
   },
   [`/products/${SPRING_SLUG}`]: {
     title: "Wall Mount EV Cable Management, Spring Retractable | Postlane USA",
-    description: "Keep EV charging cables off the ground with Postlane USA's spring retractable wall mount. Offers 13 ft of reach and adapters for charging cables up to 48A.",
+    description: "Keep EV charging cables off the ground with Postlane USA's spring retractable wall mount. Has 13 ft of reach with adapters for EV cables rated up to 48A.",
   },
   "/products/pedestal": {
     title: "EV Charger Pedestal Preview | Postlane USA",
-    description: "Preview Postlane USA's upcoming EV charger pedestal. Explore our current pedestal and cable management range, or contact our team for project assistance.",
+    description: "Preview Postlane USA's upcoming EV charger pedestal. Explore our current pedestal and cable management range, or contact our team for project support.",
   },
   "/auth": { title: "Admin Sign In | Postlane USA", description: "Sign in to Postlane USA to manage product information, descriptions and image galleries." },
   "/admin": { title: "Product Administration | Postlane USA", description: "Manage Postlane USA product listings, descriptions and image galleries." },
