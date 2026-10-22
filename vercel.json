@@ -1,4 +1,11 @@
 {
+  "redirects": [
+    {
+      "source": "/products/postlane-usa-spring-system-wall-mounted-ev-charging-cable-management-13-ft-retractable-steel-with-black-powder-coat-fits-cables-up-to-48a",
+      "destination": "/products/spring-system-wall-mount-cable-management",
+      "statusCode": 301
+    }
+  ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]

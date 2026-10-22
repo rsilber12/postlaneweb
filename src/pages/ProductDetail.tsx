@@ -6,15 +6,30 @@ import { Footer } from "@/components/layout/Footer";
 import { useProduct } from "@/hooks/useProducts";
 import { resolveProductImage } from "@/lib/productImage";
 import { Dialog, DialogContent, DialogClose } from "@/components/ui/dialog";
+import { Seo } from "@/components/Seo";
+import { canonicalUrl, productMetadata, publicProductSlug } from "@/lib/seo";
 
 const ProductDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const { product, loading } = useProduct(slug);
   const navigate = useNavigate();
   const [lightbox, setLightbox] = useState<string | null>(null);
+  const path = `/products/${publicProductSlug(slug ?? "")}`;
+  const meta = product ? productMetadata(product.slug, product.title, product.long_description || product.short_description)
+    : { title: loading ? "EV Charger Pedestals | Postlane USA" : "Product Not Found | Postlane USA", description: "Explore Postlane USA EV charger pedestals and cable management solutions. Contact our team for product details and a quote." };
+  const image = product ? resolveProductImage(product.cover_image) : "";
+  const schema = product ? {
+    "@context": "https://schema.org", "@type": "Product",
+    name: product.title,
+    description: product.long_description || product.short_description || meta.description,
+    url: canonicalUrl(path),
+    brand: { "@type": "Brand", name: "Postlane USA" },
+    ...(image ? { image: [new URL(image, canonicalUrl("/")).href, ...product.gallery] } : {}),
+  } : undefined;
 
   return (
     <div className="min-h-screen flex flex-col bg-cream">
+      <Seo {...meta} path={path} ready={!loading} noindex={!loading && !product} schema={schema} />
       <Header />
 
       <main className="flex-1 pt-32 pb-20">

@@ -4,6 +4,7 @@ import { DepthCard } from "@/components/ui/Parallax3D";
 import { ArrowRight } from "lucide-react";
 import { useProducts } from "@/hooks/useProducts";
 import { resolveProductImage } from "@/lib/productImage";
+import { publicProductSlug } from "@/lib/seo";
 
 export const ProductsSection = () => {
   const { products, loading } = useProducts();
@@ -42,7 +43,7 @@ export const ProductsSection = () => {
                       </p>
                     </div>
                     <Link
-                      to={`/products/${product.slug}`}
+                      to={`/products/${publicProductSlug(product.slug)}`}
                       className="absolute bottom-4 right-4 inline-flex items-center gap-1 text-xs font-semibold bg-dark text-cream px-3 py-2 rounded-lg hover:bg-dark/90 transition-all"
                     >
                       See more
